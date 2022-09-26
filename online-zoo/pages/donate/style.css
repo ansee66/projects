@@ -1,0 +1,7 @@
+@import "../../assets/styles/global.css";
+@import "../../assets/styles/normalise.css";
+
+@import "../../assets/styles/blocks/header.css";
+@import "../../assets/styles/blocks/donate.css";
+@import "../../assets/styles/blocks/footer.css";
+@import "../../assets/styles/blocks/button.css";

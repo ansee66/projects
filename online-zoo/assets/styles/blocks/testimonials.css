@@ -1,0 +1,84 @@
+.testimonials {
+    position: relative;
+}
+
+.testimonials::before {
+    position: absolute;
+    content: "";
+    top: 480px;
+    right: -151px;
+    background-image: url("../../images/leav_foto.png");
+    background-position:  0 0;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 295px;
+}
+
+.testimonials__title {
+    margin-top: 140px;
+    margin-bottom: 47px;
+    text-align: center;
+    
+    font-family: 'Roboto-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+
+    color: #333B41;
+}
+
+.testimonials__list {
+    display: flex;
+    justify-content: center;
+}
+
+.testimonials__item {
+    margin-left: 0;
+    margin-right: 30px;
+    padding: 15px 15px 19px 15px;
+    width: 266px;
+    height: 391px;
+
+    background: #F1F3F2;
+    border: 1px solid #FEBDABBD;
+    border-radius: 20px;
+
+    overflow-y: hidden;
+}
+
+.testimonials__item:last-child {
+    margin-right: 0;
+}
+
+.testimonials__item-name {
+    /* font-family: 'Roboto-Regular'; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.testimonials__item-other {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+
+    color: #BDBDBD;
+}
+
+.testimonials__item-review {
+    /* font-family: 'Roboto-Regular'; */
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+
+    color: var(--gray);
+}
+
+.testimonials__btn {
+    margin-top: 60px;
+}
