@@ -36,24 +36,20 @@
     margin-right: 58px;
 }
 
-.header__nav-link {
+.header__link {
     color: var(--white);
     text-decoration: none;
-}
-
-.header__nav-link--active {
-    color: #F9804B;
-    text-decoration: none;
-}
-
-.header__nav-link:active {
-    color: #F9804B;
-}
-
-.header__designed {
     cursor: pointer;
 }
 
-.header__designed:active {
+.header__link--active {
+    color: #F9804B;
+}
+
+.header__link:hover {
+    color: yellow;
+}
+
+.header__link:active {
     color: #F9804B;
 }
