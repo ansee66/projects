@@ -5,8 +5,8 @@
 .testimonials::before {
     position: absolute;
     content: "";
-    top: 480px;
-    right: -151px;
+    top: 500px;
+    right: -274px;
     background-image: url("../../images/leav_foto.png");
     background-position:  0 0;
     background-repeat: no-repeat;

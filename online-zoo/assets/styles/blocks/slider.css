@@ -12,14 +12,28 @@
     align-items: center;
 }
 
+.slider__wrapper::before {
+  position: absolute;
+  content: "";
+
+  top: 644px;
+  left: -139px;
+
+  background-image: url("../../images/palm_foto.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  width: 292px;
+  height: 460px;
+}
+
 .slider__wrapper::after {
     position: absolute;
     content: "";
 
     top: 830px;
-    right: -217px;
+    right: -139px;
 
-    background-image: url("../../strelitzia.png");
+    background-image: url("../../images/strelitzia.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     width: 368px;
@@ -83,10 +97,7 @@
     line-height: 120%;
 }
 
-/* .slider__btn-r {
-} */
-
 .slider__button {
     margin: 0 auto ;
-    margin-top: 80px;
+    margin-top: 58px;
 }
