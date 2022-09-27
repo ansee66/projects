@@ -1,43 +1,39 @@
 .favorite {
     max-width: 1600px;
     height: 780px;
-    margin: 0 auto;
-}
-
-.favorite__img {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    /* position: absolute; */
+    margin: -80px auto 0;
+    background-image: url('../../images/Big_panda.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .favorite__title {
     position: relative;
-    width: 500.31px;
+    max-width: 501px;
     height: 400px;
 
-    margin-top: -550px;
-    margin-left: 770px;
+    margin-top: -623px;
+    margin-left: 881px;
 
-    font-family: 'Roboto-Bold';
-    font-style: normal;
+    font-family: 'Roboto', 'Arial', sans-serif;
     font-weight: 700;
-    font-size: 106.496px;
+    font-size: 107px;
     line-height: 75%;
     text-transform: uppercase;
+    text-align: center;
 
     z-index: 1;
 
-    color:var(--white);
+    color: var(--white);
 }
 
 .favorite__title::before {
     position: absolute;
     content: "";
 
-    top: -110px;
-    right: 141px;
+    top: -74px;
+    left: -73px;
 
     width: 465px;
     height: 465px;
@@ -54,5 +50,7 @@
 }
 
 .favorite__button {
-    margin-left: 52%;
+    position: relative;
+    margin-top: -8px;
+    margin-left: 61.5%;
 }

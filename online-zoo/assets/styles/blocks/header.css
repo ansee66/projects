@@ -1,22 +1,35 @@
 .header {
+    position: relative;
     background-color: var(--black);
     color: var(--white);
     z-index: 2;
 }
 
 .header__wrapper {
-    max-width: 1280px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 15px 10px;
+    padding: 14px 0;
 
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo-block {
+    margin-right: 63px;
+}
+
+.header__logo {
+    display: block;
+}
+
+.header__nav {
+    margin-right: auto;
 }
 
 .header__nav-list {
     display: flex;
-    margin-right: 438px;
-    margin-top: 20px;
+    align-items: center;
+    height: 100%;
 }
 
 .header__nav-item {
@@ -38,7 +51,6 @@
 }
 
 .header__designed {
-    margin-top: 20px;
     cursor: pointer;
 }
 

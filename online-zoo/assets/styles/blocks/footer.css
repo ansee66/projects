@@ -8,13 +8,13 @@
 .footer__wrapper {
     max-width: 1160px;
     margin: 0 auto;
-    padding: 15px 10px;
+    padding: 40px 0 15px;
 
     display: flex;
 }
 
 .footer__logo {
-    margin-bottom: 84px;
+    margin-bottom: 63px;
 }
 
 .footer__button {
