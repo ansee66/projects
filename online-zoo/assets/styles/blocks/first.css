@@ -1,0 +1,10 @@
+.first {
+    max-width: 1600px;
+    height: 390px;
+    margin: -3px auto 0;
+}
+
+.first__img {
+    display: block;
+    height: 100%;
+}

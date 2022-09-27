@@ -5,6 +5,10 @@
     z-index: 2;
 }
 
+.page--donate .footer {
+    margin-top: 0;
+}
+
 .footer__wrapper {
     max-width: 1160px;
     margin: 0 auto;
