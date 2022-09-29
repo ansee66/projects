@@ -40,15 +40,19 @@
                 <div class="donate__feed">
                     <h2 class="donate__feed-title">Pick and feed a friend</h2>
                     <p>We know the animals bring you joy, and in these extraordinary times, we’re glad.</p>
-                    <div class="">
-                        <p><span>4</span>Panda diet for the day.</p>
-                        <div class="donate__feed-panda"></div>
+                    <div class="donate__diet">
+                        <p class="donate__diet-count"><span>4</span>Panda diet for the day.</p>
+                        <img class="donate__img" src="../../assets/images/panda_widget1.png" alt="Panda" width="284" height="246">
                     </div>
                     <p>Amount</p>
-                    <input type="text" placeholder="Another amount">
-                    <input type="radio">Monthly <br>
-                    <input type="radio">Once <br>
-                    <button class="button">Feed a friend now</button>
+                    <input class="donate__input" type="number" placeholder="Another amount" min="0" max="9999" step="25">
+                    <div class="donate__period">
+                        <input type="radio" id="monthly" name="period" value="monthly" class="visually-hidden">
+                        <label class="donate__radio" for="monthly">Monthly</label>
+                        <input type="radio" id="once" name="period" value="once" class="visually-hidden">
+                        <label class="donate__radio" for="once">Once</label>
+                    </div>
+                    <button class="button donate__button">Feed a friend now</button>
                     <p>Share with your friends on social networks </p>
                 </div>
             </div>
