@@ -38,12 +38,6 @@
     border-radius: 20px;
 }
 
-.donate__feed-panda {
-    background-image: url("../../images/panda_widget1.png");
-    width: 284px;
-    height: 246px;
-}
-
 .donate__feed-title {
     margin-bottom: 30px;
 
@@ -53,4 +47,85 @@
     text-align: center;
 
     color: var(--orange);
+}
+
+.donate__diet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 48px;
+}
+
+.donate__diet-count {
+    position: relative;
+    margin-right: 89px;
+    padding-top: 50px;
+}
+
+.donate__diet-count span {
+    display: block;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.donate__diet-count::after {
+    position: absolute;
+    content: "";
+    width: 14px;
+    height: 14px;
+    right: -25px;
+    top: 55%;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 14C0.744141 14 0.488281 13.9023 0.292969 13.707C-0.0976562 13.3164 -0.0976562 12.6836 0.292969 12.293L12.293 0.292969C12.6836 -0.0976562 13.3164 -0.0976562 13.707 0.292969C14.0977 0.683594 14.0977 1.31641 13.707 1.70703L1.70703 13.707C1.51172 13.9023 1.25586 14 1 14Z' fill='%23333B41'/%3E%3Cpath d='M13 14C12.7441 14 12.4883 13.9023 12.293 13.707L0.292969 1.70703C-0.0976562 1.31641 -0.0976562 0.683594 0.292969 0.292969C0.683594 -0.0976562 1.31641 -0.0976562 1.70703 0.292969L13.707 12.293C14.0977 12.6836 14.0977 13.3164 13.707 13.707C13.5117 13.9023 13.2559 14 13 14Z' fill='%23333B41'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.donate__img {
+    width: 284px;
+    height: 246px;
+}
+
+.donate__input {
+    min-width: 268px;
+    padding: 15px 50px 15px 9px;
+    line-height: 22px;
+    background-color: transparent;
+    border: 1px solid #929699;
+    border-radius: 2px;
+}
+
+.donate__period {
+    max-width: 218px;
+    margin: 26px auto 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.donate__radio {
+    display: flex;
+    align-items: center;
+}
+
+.donate__radio::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 1px solid #FE9013;
+    border-radius: 50%;
+}
+
+.donate__period input:checked + .donate__radio::before {
+    background-color: #4B9200;
+    border: 1px solid #4B9200;
+}
+
+.donate__button {
+    margin: 30px auto;
 }
