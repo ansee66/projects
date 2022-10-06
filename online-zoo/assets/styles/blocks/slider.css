@@ -1,7 +1,7 @@
 .slider {
     position: relative;
     margin: 0 auto;
-    padding-top: 180px;
+    padding-top: 90px;
     padding-bottom: 100px;
     background-image: 
         url("../../images/palm_foto.png"),
@@ -71,7 +71,7 @@
 
 @media (max-width: 1599px) {
     .slider {
-        padding-top: 142px;
+        padding-top: 70px;
         padding-bottom: 140px;
         background-size: 
             386px 283px,
@@ -99,5 +99,41 @@
 
     .slider__button {
         margin-top: 83px;
+    }
+}
+
+@media (max-width: 999px) {
+    .slider {
+        padding-top: 40px;
+        padding-bottom: 100px;
+        background-size: 385px 282px, 175px 131px;
+        background-position: left -251px bottom -82px, right bottom -1px;
+    }
+
+    .slider__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 92px 30px;
+
+    }
+
+    .slider__item:nth-child(5),
+    .slider__item:nth-child(6) {
+        display: none;
+    }
+
+    .slider__btn {
+        margin-top: -34px;
+    }
+
+    .slider__btn--left {
+        left: 35vw;
+    }
+
+    .slider__btn--right {
+        right: 35vw;
+    }
+
+    .slider__button {
+        margin-top: 60px;
     }
 }

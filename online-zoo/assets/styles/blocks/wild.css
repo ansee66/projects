@@ -1,6 +1,11 @@
 .wild {
-    position: relative;
     padding-top: 140px;
+    padding-bottom: 90px;
+
+    background-image: url("../../images/flower_foto1.png");
+    background-repeat: no-repeat;
+    background-position: right top 15px;
+    background-size: 203px 605px;
 }
 
 .wild__inner {
@@ -9,20 +14,17 @@
     align-items: center;
 }
 
-@media (min-width: 1600px) {
-    .wild::before {
-        position: absolute;
-        content: "";
-        top: 14px;
-        right: 0;
+
+/* .wild::before {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 0;
+
     
-        background-image: url("../../images/flower_foto1.png");
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        width: 203px;
-        height: 605px;
-    }
-}
+    width: 203px;
+    height: 605px;
+} */
 
 .wild__text {
     margin-left: 87px;
@@ -59,6 +61,8 @@
 @media (max-width: 1599px) {
     .wild {
         padding-top: 100px;
+        padding-bottom: 72px;
+        background-image: none;
     }
 
     .wild__img {
@@ -69,5 +73,41 @@
 
     .wild__text {
         margin-left: 31px;
+    }
+}
+
+@media (max-width: 999px) { 
+    .wild {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-image: url("../../images/flower_foto1.png");
+        background-size: 158px 476px;
+        background-position: right -28px top -3px;
+    }
+    
+    .wild__inner {
+        justify-content: flex-start;
+    }
+
+    .wild__img {
+        display: none;
+    }
+
+    .wild__text {
+        width: 82%;
+        margin-left: 0;
+    }
+
+    .wild__title {
+        margin-left: 4px;
+    }
+
+    .wild__subtitle {
+        margin-bottom: 20px;
+        margin-left: 4px;
+    }
+
+    .wild__text-basis {
+        margin-bottom: 30px;
     }
 }

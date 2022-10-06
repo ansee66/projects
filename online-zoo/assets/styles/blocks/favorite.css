@@ -76,3 +76,32 @@
         margin-left: 56.5vw;
     }
 }
+
+@media (max-width: 999px) {
+    .favorite {
+        height: 373px;
+        padding-top: 82px;
+        /* background-size: cover; */
+    }
+
+    .favorite__title {
+        max-width: 256px;
+        margin-bottom: 0;
+        margin-left: 57.5vw;
+
+        font-size: 54px;
+        line-height: 76%;
+    }
+
+    .favorite__title::before {
+        top: -38px;
+        left: -37px;
+        width: 238px;
+        height: 238px;
+    }
+
+    .favorite__button {
+        margin-top: -8px;
+        margin-left: 20px;
+    }
+}

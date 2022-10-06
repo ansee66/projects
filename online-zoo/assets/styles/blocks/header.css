@@ -27,6 +27,11 @@
     margin-right: auto;
 }
 
+.header__nav-burger {
+    font-size: 0;
+    display: none;
+}
+
 .header__nav-list {
     display: flex;
     align-items: center;
@@ -63,5 +68,40 @@
 
     .header__nav-item {
         margin-right: 48px;
+    }
+}
+
+@media (max-width: 999px) {
+    .header__wrapper {
+        padding: 2px 20px 3px;
+    }
+
+    .header__logo {
+        width: 47px;
+        height: 29px;
+    }
+
+    .header__nav {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .header__nav-list {
+        display: none;
+    }
+
+    .header__link--designed {
+        display: none;
+    }
+
+    .header__nav-burger {
+        display: block;
+        width: 18px;
+        height: 2px;
+
+        background-color: white;
+        border: none;
+        border-radius: 2px;
+        box-shadow: 0 -4px 0 0 #fff, 0 4px 0 0 #fff;
     }
 }
