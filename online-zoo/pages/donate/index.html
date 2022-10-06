@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
@@ -33,18 +33,70 @@
             <img class="first__img" src="../../assets/images/panda_bg.png" alt="panda" width="1600" height="390">
         </div>
         <section class="donate">
-            <div class="donate-wrapper">
+            <div class="donate__wrapper">
                 <h2 class="donate__title">THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!</h2>
                 <p class="donate__text">Even though the Zoo has been able to reopen, we are at a greatly reduced capacity with educational programs and public and private events cancelled or postponed for additional months. We need you now more than ever to help ensure that we overcome these challenges. We have been actively raising funds in the community, and we are grateful for the generosity.  But much more support is still needed, and we need your help! Please consider a gift today – no matter what size – to help us sustain our mission.</p>
                 <h3 class="donate__info">Donation Information</h3>
                 <div class="donate__feed">
                     <h2 class="donate__feed-title">Pick and feed a friend</h2>
-                    <p>We know the animals bring you joy, and in these extraordinary times, we’re glad.</p>
+                    <p class="donate__feed-text">We know the animals bring you joy, and in these extraordinary times, we’re glad.</p>
                     <div class="donate__diet">
                         <p class="donate__diet-count"><span>4</span>Panda diet for the day.</p>
                         <img class="donate__img" src="../../assets/images/panda_widget1.png" alt="Panda" width="284" height="246">
                     </div>
-                    <p>Amount</p>
+                    <div class="donate__amount">
+                        <p class="donate__amount-title">Amount</p>
+                        <ul class="donate__range range">
+                            <li class="range__item">
+                                <label class="range__label" for="donate-5000">
+                                    <input class="range__input" id="donate-5000" type="radio" name="donate-amount" value="5000">
+                                    <span class="range__sum">$5000</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-2000">
+                                    <input class="range__input" id="donate-2000" type="radio" name="donate-amount" value="2000">
+                                    <span class="range__sum">$2000</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-1000">
+                                    <input class="range__input" id="donate-1000" type="radio" name="donate-amount" value="1000">
+                                    <span class="range__sum">$1000</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-500">
+                                    <input class="range__input" id="donate-500" type="radio" name="donate-amount" value="500">
+                                    <span class="range__sum">$500</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-250">
+                                    <input class="range__input" id="donate-250" type="radio" name="donate-amount" value="250">
+                                    <span class="range__sum">$250</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-100">
+                                    <input class="range__input" id="donate-100" type="radio" name="donate-amount" value="100">
+                                    <span class="range__sum">$100</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-50">
+                                    <input class="range__input" id="donate-50" type="radio" name="donate-amount" value="50">
+                                    <span class="range__sum">$50</span>
+                                </label>
+                            </li>
+                            <li class="range__item">
+                                <label class="range__label" for="donate-25">
+                                    <input class="range__input" id="donate-25" type="radio" name="donate-amount" value="25">
+                                    <span class="range__sum">$25</span>
+                                </label>
+                            </li>
+                        </ul>
+                      </div>
                     <input class="donate__input" type="number" placeholder="Another amount" min="0" max="9999" step="25">
                     <div class="donate__period">
                         <input type="radio" id="monthly" name="period" value="monthly" class="visually-hidden">
@@ -84,7 +136,7 @@
                 </ul>
             </div>
             <ul class="footer__nav-list style-list">
-                <li class="footer__nav-item"><a class="footer__link footer__link--active" href="../../pages/main/index.html">About</a></li>
+                <li class="footer__nav-item"><a class="footer__link" href="../../pages/main/index.html">About</a></li>
                 <li class="footer__nav-item"><a class="footer__link" href="#">Map</a></li>
                 <li class="footer__nav-item"><a class="footer__link" href="#">Zoos</a></li>
                 <li class="footer__nav-item"><a class="footer__link" href="#">Contact us</a></li>
