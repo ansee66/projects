@@ -1,0 +1,37 @@
+.card {
+    position: relative;
+
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card__image {
+    display: block;
+}
+
+.card__bottom {
+    padding: 8px 13px 11px 16px;
+    background-color: var(--white);
+}
+
+.card__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+
+    text-transform: uppercase;
+}
+
+.card__birth {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+@media (max-width: 1599px) {
+    /* .card__bottom {
+        padding-bottom: 14px;
+    } */
+}

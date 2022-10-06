@@ -1,7 +1,8 @@
 .favorite {
     max-width: 1600px;
     height: 780px;
-    margin: -80px auto 0;
+    margin: 0 auto;
+    padding-top: 166px;
     background-image: url('../../images/Big_panda.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -11,10 +12,7 @@
 .favorite__title {
     position: relative;
     max-width: 501px;
-    height: 400px;
-
-    margin-top: -623px;
-    margin-left: 881px;
+    margin: 0 0 60px 55%;
 
     font-family: 'Roboto', 'Arial', sans-serif;
     font-weight: 700;
@@ -51,6 +49,30 @@
 
 .favorite__button {
     position: relative;
-    margin-top: -8px;
     margin-left: 61.5%;
+}
+
+@media (max-width: 1599px) {
+    .favorite {
+        height: 584px;
+        padding-top: 124px;
+        background-size: cover;
+    }
+
+    .favorite__title {
+        margin-bottom: 40px;
+        margin-left: 46.3vw;
+        font-size: 85px;
+    }
+
+    .favorite__title::before {
+        top: -54px;
+        left: -7px;
+        width: 367px;
+        height: 367px;
+    }
+
+    .favorite__button {
+        margin-left: 56.5vw;
+    }
 }
