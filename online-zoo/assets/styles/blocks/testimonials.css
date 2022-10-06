@@ -112,3 +112,21 @@
         margin: 40px auto 0;
     }
 }
+
+@media (max-width: 639px) {
+    .testimonials {
+        padding-top: 30px;
+        padding-bottom: 60px;
+        background-size: 70px 100px;
+        background-position: right -3px bottom -33px
+    }
+
+    .testimonials__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .testimonials__btn {
+        margin-top: 28px;
+    }
+}

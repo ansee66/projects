@@ -105,3 +105,10 @@
         box-shadow: 0 -4px 0 0 #fff, 0 4px 0 0 #fff;
     }
 }
+
+@media (max-width: 639px) {
+    .header__wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
