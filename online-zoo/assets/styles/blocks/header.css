@@ -1,4 +1,5 @@
 .header {
+    grid-area: header;
     position: relative;
     background-color: var(--black);
     color: var(--white);
@@ -52,4 +53,15 @@
 
 .header__link:active {
     color: #F9804B;
+}
+
+@media (max-width: 1599px) {
+    .header__wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .header__nav-item {
+        margin-right: 48px;
+    }
 }

@@ -1,26 +1,17 @@
 .testimonials {
-    position: relative;
-}
+    padding-top: 140px;
+    padding-bottom: 180px;
 
-.testimonials::before {
-    position: absolute;
-    content: "";
-    top: 500px;
-    right: -274px;
     background-image: url("../../images/leav_foto.png");
-    background-position:  0 0;
+    background-position: right bottom -134px;
     background-repeat: no-repeat;
-    width: 300px;
-    height: 295px;
+    background-size: 247px 408px;
 }
 
 .testimonials__title {
-    margin-top: 140px;
     margin-bottom: 47px;
     text-align: center;
     
-    font-family: 'Roboto-Regular';
-    font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 130%;
@@ -29,15 +20,14 @@
 }
 
 .testimonials__list {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 }
 
 .testimonials__item {
     margin-left: 0;
-    margin-right: 30px;
     padding: 15px 15px 19px 15px;
-    width: 266px;
     height: 391px;
 
     background: #F1F3F2;
@@ -47,13 +37,7 @@
     overflow-y: hidden;
 }
 
-.testimonials__item:last-child {
-    margin-right: 0;
-}
-
 .testimonials__item-name {
-    /* font-family: 'Roboto-Regular'; */
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
@@ -61,7 +45,6 @@
 
 .testimonials__item-other {
     display: inline-block;
-    font-style: normal;
     font-weight: 300;
     font-size: 15px;
     line-height: 120%;
@@ -70,7 +53,6 @@
 }
 
 .testimonials__item-review {
-    /* font-family: 'Roboto-Regular'; */
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -81,4 +63,29 @@
 
 .testimonials__btn {
     margin-top: 60px;
+}
+
+@media (max-width: 1599px) {
+    .testimonials {
+        padding-top: 100px;
+        padding-bottom: 140px;
+        background-size: 200px 324px;
+        background-position: right bottom -84px;
+    }
+
+    .testimonials__title {
+        margin-bottom: 30px;
+    }
+
+    .testimonials__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonials__item:last-child {
+        display: none;
+    }
+
+    .testimonials__btn {
+        margin-top: 81px;
+    }
 }
