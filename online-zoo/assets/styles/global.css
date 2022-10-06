@@ -45,7 +45,7 @@ html {
     letter-spacing: 0em; 
 }
 
-main {
+.page-main {
     grid-area: content;
     margin-top: -80px;
 }
@@ -96,5 +96,16 @@ img {
     .container {
         padding-left: 30px;
         padding-right: 30px;
+    }
+}
+
+@media (max-width: 999px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .page-main {
+        margin-top: -34px;
     }
 }

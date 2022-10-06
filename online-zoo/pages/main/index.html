@@ -24,11 +24,12 @@
                     <li class="header__nav-item"><a class="header__link" href="../../pages/donate/index.html">Donate</a></li>
                     <li class="header__nav-item"><a class="header__link" href="#">Contact us</a></li>
                 </ul>
+                <button class="header__nav-burger">Open / Close menu</button>
             </nav>
             <a class="header__link header__link--designed" href="https://www.figma.com/file/ypzT9idgAILaSRVRmDAJxn/online-zoo-3-weeks">Designed by ©</a>
         </div>
     </header>
-    <main>
+    <main class="page-main">
         <section class="favorite">
             <h1 class="favorite__title">Watch your <span class="favorite__title--color">favorite</span> animal online</h1>
             <button class="favorite__button button">wath online</button>
@@ -149,11 +150,13 @@
     </main>
     <footer class="footer">
         <div class="footer__wrapper">  
-            <div>
-                <a href="../../pages/main/index.html">
-                    <img  class="footer__logo" src="../../assets/icons/logo_footer.png" alt="logo">
-                </a>
-                <button class="button button--rectangle footer__button">donate for volunteers</button>
+            <div class="footer__left">
+                <div class="footer__left-inner">
+                    <a href="../../pages/main/index.html">
+                        <img  class="footer__logo" src="../../assets/icons/logo_footer.png" alt="logo">
+                    </a>
+                    <button class="button button--rectangle footer__button">donate for volunteers</button>
+                </div>
                 <ul class="footer__social-list style-list">
                     <li class="footer__social-item">
                         <a class="footer__social-link footer__facebook" href="#">Facebook</a>
@@ -182,7 +185,7 @@
                     <label for="email">
                         <input class="form__input" id="email" type="email" placeholder="Enter your email">
                     </label>
-                    <button type="submit" class="button form__button">Submit</button>
+                    <button type="submit" class="button form__submit">Submit</button>
                 </form>
                 <div class="footer__copyright">
                     <p>Designed by Alisa Samborskaya</p>
