@@ -81,7 +81,6 @@
     .favorite {
         height: 373px;
         padding-top: 82px;
-        /* background-size: cover; */
     }
 
     .favorite__title {
@@ -103,5 +102,29 @@
     .favorite__button {
         margin-top: -8px;
         margin-left: 20px;
+    }
+}
+
+@media (max-width: 639px) {
+    .favorite {
+        height: 221px;
+        padding-top: 76px;
+    }
+
+    .favorite__title {
+        margin-left: 53.5vw;
+        font-size: 28px;
+    }
+
+    .favorite__title::before {
+        top: -20px;
+        left: -8px;
+        width: 119px;
+        height: 119px;
+    }
+
+    .favorite__button {
+        margin-top: 59px;
+        margin-left: 10px;
     }
 }

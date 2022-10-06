@@ -137,3 +137,29 @@
         margin-top: 60px;
     }
 }
+
+@media (max-width: 639px) {
+    .slider {
+        padding-top: 0;
+        padding-bottom: 60px;
+        background-size: 138px 100px, 85px 71px;
+        background-position: left -80px bottom -28px, right -19px bottom -4px;
+    }
+
+    .slider__list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .slider__item {
+        margin-right: 15px;
+    }
+
+    .slider__btn {
+        display: none;
+    }
+
+    .slider__button {
+        margin-top: 20px;
+    }
+}
