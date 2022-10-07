@@ -3,7 +3,7 @@
     justify-content: space-between;
     position: relative;
 
-    margin-bottom: 95px;
+    margin-bottom: 99px;
     height: 27px;
     padding: 3px 26px;
 
@@ -47,7 +47,7 @@
 .range__sum {
     cursor: pointer;
     position: absolute;
-    top: 35px;
+    top: 36px;
     left: 50%;
     transform: translateX(-50%);
 
@@ -75,5 +75,58 @@
 
     .range__sum {
         margin-left: 10px;
+    }
+}
+
+@media (max-width: 999px) {
+    .range {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .range::before {
+        width: calc(100% - 70px);
+        left: 35px;
+    }
+
+    .range__item:nth-child(2),
+    .range__item:nth-child(3) {
+        display: none;
+    }
+
+    .range__sum {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 639px) {
+    .range {
+        height: 14px;
+        margin-bottom: 49px;
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    .range::before {
+        width: calc(100% - 34px);
+        left: 17px;
+    }
+
+    .range__sum {
+        top: 17px;
+        margin-left: 0;
+        font-size: 13px;
+        line-height: 18.2px;
+    }
+
+    .range__label::before {
+        height: 5px;
+        width: 5px;
+        top: 1px;
+    }
+
+    .range__input {
+        width: 5px;
+        height: 5px;
     }
 }

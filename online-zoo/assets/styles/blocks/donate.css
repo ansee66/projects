@@ -69,6 +69,7 @@
 
 .donate__diet-count {
     position: relative;
+    margin-left: -14px;
     margin-right: 89px;
     padding-top: 50px;
 }
@@ -117,7 +118,7 @@
 
 .donate__period {
     max-width: 218px;
-    margin: 26px auto 30px;
+    margin: 27px auto 28px;
     display: flex;
 }
 
@@ -142,7 +143,7 @@
 }
 
 .donate__button {
-    margin: 33px auto 30px;
+    margin: 28px auto 30px;
 }
 
 @media (max-width: 1599px) {
@@ -175,5 +176,124 @@
     .donate__amount {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+@media (max-width: 999px) {
+    .donate__wrapper {
+        padding: 30px 20px 45px;
+    }
+
+    .donate__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .donate__info {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .donate__feed {
+        padding: 30px 0px 31px;
+    }
+
+    .donate__feed-title {
+        margin-bottom: 20px;
+    }
+
+    .donate__diet {
+        margin-top: 50px;
+        margin-bottom: 41px;
+    }
+
+    .donate__amount {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .donate__amount-title {
+        margin-bottom: 7px;
+        padding-left: 10px;
+    }
+
+    .donate__input {
+        min-width: 180px;
+        padding: 9px 7px;
+    }
+
+    .donate__period {
+        margin: 30px auto;
+    }
+}
+
+
+@media (max-width: 639px) {
+    .donate__wrapper {
+        padding: 30px 10px 21px;
+    }
+
+    .donate__info {
+        margin-bottom: 28px;
+        font-size: 24px;
+    }
+
+    .donate__feed {
+        padding: 20px 0px;
+    }
+
+    .donate__feed-title {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .donate__feed-text {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .donate__diet {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .donate__diet-count {
+        margin-left: 0;
+        margin-right: 50px;
+        padding-top: 35px;
+        font-size: 9px;
+    }
+
+    .donate__diet-count span {
+        font-size: 41px;
+    }
+
+    .donate__diet-count::after {
+        width: 8px;
+        height: 8px;
+        right: -14px;
+        top: 54%;
+    }
+    
+    .donate__img {
+        width: 160px;
+        height: 139px;
+    }
+
+    .donate__amount-title {
+        padding-left: 0;
+    }
+
+    .donate__period {
+        margin: 25px auto;
+    }
+
+    .donate__button {
+        margin-top: 27px;
+    }
+
+    .donate__end-text {
+        margin-left: -1px;
     }
 }
