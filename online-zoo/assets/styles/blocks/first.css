@@ -19,3 +19,23 @@
         object-position: -171px;
     }
 }
+
+@media (max-width: 999px) {
+    .first {
+        height: 335px;
+    }
+    
+    .first__img {
+        object-position: -272px;
+    }
+}
+
+@media (max-width: 639px) {
+    .first {
+        height: 187px;
+    }
+    
+    .first__img {
+        object-position: -149px;
+    }
+}
