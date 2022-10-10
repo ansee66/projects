@@ -44,3 +44,9 @@
         font-size: 11.7px;
     }
 }
+
+@media (max-width: 999px) {
+    .card {
+        max-width: 285px;
+    }
+}
