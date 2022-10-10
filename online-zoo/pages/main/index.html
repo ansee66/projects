@@ -8,13 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
     <title>Document</title>
 </head>
 <body class="page">
+    <div class="overlay"></div>
     <header class="header">
         <div class="header__wrapper">
             <a class="header__logo-block" href="../../pages/main/index.html">
-                <img class="header__logo" src="../../assets/icons/logo_footer.png" alt="logo">
+                <img class="header__logo" src="../../assets/icons/logo_footer.png" alt="logo" width="73" height="45">
+                <img class="header__logo header__logo--orange" src="../../assets/icons/logo-orange.png" alt="logo" width="57" height="30">
             </a>
             <nav class="header__nav">
                 <ul class="header__nav-list style-list">
@@ -49,50 +52,70 @@
             <div class="container">
                 <div class="slider__wrapper">
                     <button class="button--circle slider__btn slider__btn--left button"></button>
-                    <ul class="slider__list">
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__Pandas.png" alt="Pandas" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">giant Pandas</h3>
-                                <p class="card__birth">Native to Southwest China</p>
-                            </div>
-                        </li>
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__Eagles.png" alt="Eagles" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">Eagles</h3>
-                                <p class="card__birth">Native to South America</p>
-                            </div>
-                        </li>
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__Gorillas.png" alt="Gorillas" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">Gorillas</h3>
-                                <p class="card__birth">Native to Congo</p>
-                            </div>
-                        </li>
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__Two-toed-Sloth.png" alt="Two toed Sloth" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">Two-toed Sloth</h3>
-                                <p class="card__birth">Mesoamerica, South America</p>
-                            </div>
-                        </li>
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__cheetahs.png" alt="cheetahs" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">cheetahs</h3>
-                                <p class="card__birth">Native to Africa</p>
-                            </div>
-                        </li>
-                        <li class="slider__item card">
-                            <img class="card__image" src="../../assets/images/Slider__Penguins.png" alt="Penguins" width="366" height="366">
-                            <div class="card__bottom">
-                                <h3 class="card__title">Penguins</h3>
-                                <p class="card__birth">Native to Antarctica</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="slider__list-wrapper">
+                        <div class="slider__list">
+                            <ul class="slider__item slider__item--left"></ul>
+                            <ul class="slider__item slider__item--center">
+                                <li class="slider__card card" data-animal-number="1">
+                                    <img class="card__image" src="../../assets/images/Slider__Pandas.png" alt="Pandas" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">giant Pandas</h3>
+                                        <p class="card__birth">Native to Southwest China</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="2">
+                                    <img class="card__image" src="../../assets/images/Slider__Eagles.png" alt="Eagles" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Eagles</h3>
+                                        <p class="card__birth">Native to South America</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="3">
+                                    <img class="card__image" src="../../assets/images/Slider__Gorillas.png" alt="Gorillas" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Gorillas</h3>
+                                        <p class="card__birth">Native to Congo</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="4">
+                                    <img class="card__image" src="../../assets/images/Slider__Two-toed-Sloth.png" alt="Two toed Sloth" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Two-toed Sloth</h3>
+                                        <p class="card__birth">Mesoamerica, South America</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="5">
+                                    <img class="card__image" src="../../assets/images/Slider__cheetahs.png" alt="cheetahs" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">cheetahs</h3>
+                                        <p class="card__birth">Native to Africa</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="6">
+                                    <img class="card__image" src="../../assets/images/Slider__Penguins.png" alt="Penguins" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Penguins</h3>
+                                        <p class="card__birth">Native to Antarctica</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="7">
+                                    <img class="card__image" src="../../assets/images/Slider__gorilla.jpg" alt="gorillas" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Gorillas</h3>
+                                        <p class="card__birth">Native to Congo</p>
+                                    </div>
+                                </li>
+                                <li class="slider__card card" data-animal-number="8">
+                                    <img class="card__image" src="../../assets/images/Slider__alligator.jpg" alt="alligator" width="366" height="366">
+                                    <div class="card__bottom">
+                                        <h3 class="card__title">Alligators</h3>
+                                        <p class="card__birth">Native to Southeastern United States</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="slider__item slider__item--right"></ul>
+                        </div>
+                    </div>
                     <button class="button--circle slider__btn slider__btn--right button"></button>
                 </div>
                 <button class="button slider__button">choose your favorite</button>
@@ -195,5 +218,6 @@
             </div>
         </div>
     </footer>
+    <script src="./script.js"></script>
 </body>
 </html>

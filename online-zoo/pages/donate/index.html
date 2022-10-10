@@ -8,13 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
     <title>Document</title>
 </head>
 <body class="page page--donate">
+    <div class="overlay"></div>
     <header class="header">
         <div class="header__wrapper">
             <a class="header__logo-block" href="../../pages/main/index.html">
-                <img class="header__logo" src="../../assets/icons/logo_footer.png" alt="logo">
+                <img class="header__logo" src="../../assets/icons/logo_footer.png" alt="logo" width="73" height="45">
+                <img class="header__logo header__logo--orange" src="../../assets/icons/logo-orange.png" alt="logo" width="57" height="30">
             </a>
             <nav class="header__nav">
                 <ul class="header__nav-list style-list">
@@ -24,6 +27,7 @@
                     <li class="header__nav-item"><a class="header__link header__link--active">Donate</a></li>
                     <li class="header__nav-item"><a class="header__link" href="#">Contact us</a></li>
                 </ul>
+                <button class="header__nav-burger">Open / Close menu</button>
             </nav>
             <a class="header__link header__link--designed" href="https://www.figma.com/file/ypzT9idgAILaSRVRmDAJxn/online-zoo-3-weeks">Designed by ©</a>
         </div>
@@ -157,5 +161,6 @@
             </div>
         </div>
     </footer>
+    <script src="./script.js"></script>
 </body>
 </html>
