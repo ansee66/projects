@@ -5,6 +5,7 @@ const body = document.querySelector('.page');
 const overlay = document.querySelector('.overlay');
 
 let isMenuOpened = false;
+let isPopupOpened = false;
 
 function openMenu() {
     header.classList.add('header--opened');
@@ -23,15 +24,6 @@ navButton.addEventListener("click", function() {
         closeMenu();
     } else {
         openMenu();
-    }
-});
-
-document.addEventListener("click", function(event) {
-    if (isMenuOpened) {
-        let isMenuClicked = event.target.classList.contains("header--opened") || header.contains(event.target);
-        if ( !isMenuClicked ) {
-            closeMenu();
-        };
     }
 });
 
@@ -116,6 +108,60 @@ range.addEventListener("input", () => {
     }
     let rangeValue = range.value; 
     testimonialsList.style.transform = `translate(-${(testimonialsCard.offsetWidth + 30) * rangeValue}px)`;
+});
+
+// карусель в блоке с Testimonials
+const popup = document.querySelector('.popup');
+const popupInner = popup.querySelector('.popup__inner');
+const popupButton = popup.querySelector('.popup__button');
+
+function openPopup() {
+    popup.classList.add('popup--opened');
+    body.classList.add('page--non-scrollable');
+    isPopupOpened = true;
+}
+
+function closePopup() {
+    popup.classList.remove('popup--opened');
+    body.classList.remove('page--non-scrollable');
+    isPopupOpened = false;
+}
+
+if (window.matchMedia("screen and (max-width: 999px)").matches) {
+    testimonialsList.addEventListener("click", (event) => {
+        let clonedItem;
+        if (event.target.classList.contains('testimonials__item')) {
+            clonedItem = event.target.cloneNode(true);
+        } else if (event.target.parentNode.classList.contains("testimonials__item")) {
+            clonedItem = event.target.parentNode.cloneNode(true);
+        }
+        popupInner.innerHTML = "";
+        Array.from(clonedItem.children).map(child => {
+            popupInner.append(child);
+        })
+        openPopup();
+    });
+
+    popupButton.addEventListener("click", () => {
+        closePopup();
+    });
+}
+
+// обработка кликов по затемненной области при открытом меню или попапе
+document.addEventListener("click", function(event) {
+    if (isMenuOpened) {
+        let isMenuClicked = event.target.classList.contains("header--opened") || header.contains(event.target);
+        if ( !isMenuClicked ) {
+            closeMenu();
+        };
+    }
+    if (isPopupOpened) {
+        let isPopupClicked = event.target.classList.contains("popup--opened") || popup.contains(event.target);
+        let isTestimonialsItemClicked = event.target.classList.contains("testimonials__item") || event.target.parentNode.classList.contains("testimonials__item");
+        if ( !isPopupClicked && !isTestimonialsItemClicked ) {
+            closePopup();
+        };
+    }
 });
 
 // обработка изменения ширины экрана
