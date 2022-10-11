@@ -152,7 +152,7 @@ opacity: 0.9;
     text-align: center;
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1599.98px) {
     .feed {
         padding: 30px 30px 50px;
     }
@@ -184,7 +184,7 @@ opacity: 0.9;
     }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 999.98px) {
     .feed {
         padding: 20px 0;
     }
@@ -224,7 +224,7 @@ opacity: 0.9;
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
     .feed {
         padding: 20px 10px;
     }

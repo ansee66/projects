@@ -1,3 +1,4 @@
+// мобильное меню
 const navButton = document.querySelector('.header__nav-burger');
 const header = document.querySelector('.header');
 const body = document.querySelector('.page');
@@ -34,14 +35,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
-window.addEventListener("resize", function() {
-    if (window.matchMedia("screen and (min-width: 999px)").matches) {
-        if (isMenuOpened) {
-            closeMenu();
-        }
-    }
-});
-
+// карусель в блоке с карточками животных
 const prevButton = document.querySelector('.slider__btn--left');
 const nextButton = document.querySelector('.slider__btn--right');
 const sliderList = document.querySelector('.slider__list');
@@ -69,7 +63,6 @@ function fillNoncentralItems(item, cardsCount) {
     while (thisItemAnimalsNumbers.length < (cardsCount)) {
         let x = (Math.floor(Math.random() * 8)).toString();
         if (thisItemAnimalsNumbers.indexOf(x) === -1) {
-            console.log(sliderCards[x])
             item.appendChild(sliderCards[x].cloneNode(true));
             thisItemAnimalsNumbers.push(x);
         }
@@ -109,3 +102,29 @@ sliderList.addEventListener("animationend", (event) => {
     prevButton.addEventListener("click", moveLeft);
     nextButton.addEventListener("click", moveRight);
 })
+
+// карусель в блоке с Testimonials
+const range = document.querySelector('.testimonials__range');
+const testimonialsList = document.querySelector('.testimonials__list');
+const testimonialsCard = document.querySelector('.testimonials__item');
+
+range.addEventListener("input", () => {
+    if (window.matchMedia("screen and (max-width: 1599px)").matches) {
+        range.max = 8;
+    } else {
+        range.max = 7;
+    }
+    let rangeValue = range.value; 
+    testimonialsList.style.transform = `translate(-${(testimonialsCard.offsetWidth + 30) * rangeValue}px)`;
+});
+
+// обработка изменения ширины экрана
+window.addEventListener("resize", function() {
+    if (window.matchMedia("screen and (min-width: 1000px)").matches) {
+        if (isMenuOpened) {
+            closeMenu();
+        }
+    } else {
+        testimonialsList.style.transform = "translate(0px)";
+    }
+});

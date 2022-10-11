@@ -114,14 +114,14 @@ img {
     overflow: hidden;
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1599.98px) {
     .container {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 999.98px) {
     .container {
         padding-left: 20px;
         padding-right: 20px;
@@ -132,7 +132,7 @@ img {
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
     .container {
         padding-left: 10px;
         padding-right: 10px;

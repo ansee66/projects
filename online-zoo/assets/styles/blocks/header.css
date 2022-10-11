@@ -75,7 +75,7 @@
     color: #F9804B;
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1599.98px) {
     .header__wrapper {
         padding-left: 30px;
         padding-right: 30px;
@@ -86,7 +86,7 @@
     }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 999.98px) {
     .header {
         position: fixed;
         width: 100%;
@@ -221,7 +221,7 @@
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
     .header__wrapper {
         padding-left: 10px;
         padding-right: 10px;
