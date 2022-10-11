@@ -9,7 +9,7 @@
     height: 100%;
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1599.98px) {
     .first {
         margin-top: 0;
     }
@@ -20,7 +20,7 @@
     }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 999.98px) {
     .first {
         height: 335px;
     }
@@ -30,7 +30,7 @@
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
     .first {
         height: 187px;
     }

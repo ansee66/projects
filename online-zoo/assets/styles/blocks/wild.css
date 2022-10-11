@@ -58,7 +58,7 @@
     line-height: 22px;
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1599.98px) {
     .wild {
         padding-top: 100px;
         padding-bottom: 72px;
@@ -112,7 +112,7 @@
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
     .wild {
         padding-top: 104px;
         padding-bottom: 40px;
