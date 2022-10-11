@@ -98,6 +98,55 @@
     margin-top: 30px;
 }
 
+.popup {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.popup--opened {
+    position: fixed;
+    width: 267px;
+    min-height: 391px;
+    padding: 15px;
+    top: 50%; 
+    right: 50%;
+    transform: translate(50%, -50%);
+    opacity: 1;
+    z-index: 7;
+    pointer-events: all;
+    background-color: #fff;
+    border: 1px solid rgba(254, 189, 171, 0.74);
+    border-radius: 20px;
+}
+
+.popup__inner {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.popup--opened .popup__button {
+    position: absolute;
+    top: -10px;
+    right: -18px;
+    width: 14px;
+    height: 14px;
+    font-size: 0;
+    background-color: transparent;
+    background-image: url("../../icons/x_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+}
+
+.popup__button:hover {
+    opacity: 0.6;
+}
+
 @media (max-width: 1599.98px) {
     .testimonials {
         padding-top: 100px;
@@ -139,6 +188,7 @@
 
     .testimonials__item {
         flex-basis: 109px;
+        cursor: pointer;
     }
 
     .testimonials__btn {
