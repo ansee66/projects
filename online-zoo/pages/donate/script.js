@@ -45,6 +45,7 @@ window.addEventListener("resize", function() {
 
 const range = document.querySelector('.donate__range');
 const amountInput = document.querySelector('.donate__input');
+const rangeNumbers = ['25', '50', '100', '250', '500', '1000', '2000', '5000'];
 
 range.addEventListener('input', (event) => {
     if (event.target.classList.contains('range__input')) {
@@ -53,13 +54,21 @@ range.addEventListener('input', (event) => {
 })
 
 amountInput.addEventListener('keydown', (event) => {
-    if (event.target.value.length >= 4) {
+    if (event.target.value.length > 4) {
         event.target.value = event.target.value.substr(0, 4);
     }
 });
   
-amountInput.addEventListener('keyup', () => {
-    if (event.target.value.length >= 4) {
+amountInput.addEventListener('keyup', (event) => {
+    if (event.target.value.length > 4) {
         event.target.value = event.target.value.substr(0, 4);
     }
+    rangeNumbers.forEach(number => {
+        if (event.target.value === number) {
+            let rangeInput = document.querySelector(`.range__input[value="${number}"]`);
+            if (getComputedStyle(rangeInput.parentNode).display !== 'none') {
+                rangeInput.checked = true;
+            } 
+        }
+    })
 });
