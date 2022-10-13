@@ -44,6 +44,7 @@ window.addEventListener("resize", function() {
 
 
 const range = document.querySelector('.donate__range');
+const rangeInputs = document.querySelectorAll('.range__input');
 const amountInput = document.querySelector('.donate__input');
 const rangeNumbers = ['25', '50', '100', '250', '500', '1000', '2000', '5000'];
 
@@ -63,12 +64,12 @@ amountInput.addEventListener('keyup', (event) => {
     if (event.target.value.length > 4) {
         event.target.value = event.target.value.substr(0, 4);
     }
+    rangeInputs.forEach(input => {
+        input.checked = false;
+    })
     rangeNumbers.forEach(number => {
         if (event.target.value === number) {
-            let rangeInput = document.querySelector(`.range__input[value="${number}"]`);
-            if (getComputedStyle(rangeInput.parentNode).display !== 'none') {
-                rangeInput.checked = true;
-            } 
+            document.querySelector(`.range__input[value="${number}"]`).checked = true;
         }
     })
 });
