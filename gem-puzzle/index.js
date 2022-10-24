@@ -17,3 +17,4 @@ container.append(score, gameField);
 
 const puzzle = new Puzzle(gameField);
 puzzle.renderPuzzle();
+puzzle.shufflePuzzle();
