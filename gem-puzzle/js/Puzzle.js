@@ -54,7 +54,7 @@ class Puzzle {
     this.moveTile(11);
     this.moveTile(7);
     for (let i = 0; i < 1000; i++) {
-      let index = Math.floor(Math.random() * 16);
+      let index = Math.floor(Math.random() * 16 + 1);
       this.moveTile(index);
     }
   }
