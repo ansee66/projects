@@ -86,3 +86,54 @@
 .tile:active {
   border: 2px solid indigo;
 }
+
+@media (max-width: 1279px) {
+  .header {
+    max-width: 600px;
+  }
+
+  .container {
+    max-width: 500px;
+  }
+  
+  .game-field {
+    width: 480px;
+    height: 480px;
+  }
+  
+  .tile {
+    width: 120px;
+    height: 120px;
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    max-width: 300px;
+  }
+  
+  .button {
+    min-height: 40px;
+    padding: 5px;
+  }
+  
+  .container {
+    max-width: 300px;
+  }
+  
+  .score {
+    padding: 20px;
+  }
+  
+  .game-field {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .tile {
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+  }
+}

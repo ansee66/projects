@@ -17,6 +17,16 @@ class Puzzle {
   }
 
   renderPuzzle() {
+    if (window.matchMedia('screen and (max-width: 767px)').matches) {
+      this.tileWidth = 70;
+    } else if (window.matchMedia('(min-width: 768px) and (max-width: 1279px)').matches) {
+      this.tileWidth = 120;
+    } else {
+      this.tileWidth = 150;
+    }
+
+    this.gameField.innerHTML = "";
+
     for (let i = 1; i <= 16; i += 1) {
       const tile = document.createElement('div');
       tile.classList.add('tile');
@@ -57,6 +67,9 @@ class Puzzle {
   
       this.tiles[i - 1].style.left = emptyLeft;
       this.tiles[i - 1].style.top = emptyTop;
+
+      this.movesCount++;
+      this.scoreMovesCount.innerHTML = this.movesCount;
     }
   }
 
@@ -104,9 +117,6 @@ class Puzzle {
   setHandlers() {
     this.gameField.addEventListener('click', (event) => {
       if (event.target.classList.contains('tile')) {
-        this.movesCount++;
-        this.scoreMovesCount.innerHTML = this.movesCount;
-
         if (!this.isGameStarted) {
           this.isGameStarted = true;
           this.timer = setInterval(() => {
