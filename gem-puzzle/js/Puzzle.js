@@ -1,5 +1,5 @@
 class Puzzle {
-  constructor(gameField, scoreTimer, scoreMovesCount) {
+  constructor(gameField, scoreTimer, scoreMovesCount, moveSound) {
     this.gameField = gameField;
     this.scoreTimer = scoreTimer;
     this.scoreMovesCount = scoreMovesCount;
@@ -13,6 +13,7 @@ class Puzzle {
     this.minutes = 0;
     this.hours = 0;
     this.gameTime;
+    this.moveSound = moveSound;
   }
 
   renderPuzzle() {
@@ -36,6 +37,7 @@ class Puzzle {
 
       tile.addEventListener("click", () => {
         this.moveTile(i);
+        this.moveSound.play();
       });
     }
   }
