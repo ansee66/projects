@@ -62,13 +62,11 @@ class Puzzle {
     this.moveTile(15);
     this.moveTile(11);
     this.moveTile(7);
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 500; i++) {
       let index = Math.floor(Math.random() * 16 + 1);
       this.moveTile(index);
     }
-    this.movesCount = 0;
-    this.scoreMovesCount.innerHTML = this.movesCount;
-    this.stopTimer();
+    this.stopGame();
   }
 
   startTimer(gameTime, scoreTimer, seconds, minutes, hours) {
@@ -90,7 +88,9 @@ class Puzzle {
     return gameTime;
   }
 
-  stopTimer() {
+  stopGame() {
+    this.movesCount = 0;
+    this.scoreMovesCount.innerHTML = this.movesCount;
     clearInterval(this.timer);
     this.scoreTimer.textContent = "00:00:00";
     this.isGameStarted = false;
@@ -104,6 +104,7 @@ class Puzzle {
       if (event.target.classList.contains('tile')) {
         this.movesCount++;
         this.scoreMovesCount.innerHTML = this.movesCount;
+
         if (!this.isGameStarted) {
           this.isGameStarted = true;
           this.timer = setInterval(() => {
@@ -111,9 +112,22 @@ class Puzzle {
             [this.seconds, this.minutes, this.hours] = [...this.gameTime];
           }, 1000);
         }
+
+        let isWin = this.tiles.every((tile, i) => {
+          if (i !== 15) {
+            return Number(tile.innerHTML) - 1 === Number(tile.style.top.slice(0, -2)) / this.tileWidth * 4 + Number(tile.style.left.slice(0, -2)) / this.tileWidth;
+          } else {
+            return Number(tile.style.top.slice(0, -2)) / this.tileWidth * 4 + Number(tile.style.left.slice(0, -2)) / this.tileWidth === 15;
+          }
+          
+        })
+
+        if (isWin) {
+          alert(`Hooray! You solved the puzzle in ${this.scoreTimer.innerHTML} and ${this.movesCount} moves!`);
+          this.stopGame();
+        }
       }
     })
-
   }
 }
 
