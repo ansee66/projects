@@ -8,6 +8,7 @@ class Puzzle {
     this.tileWidth = 150;
     this.emptyTile;
     this.isGameStarted = false;
+    this.timer;
     this.seconds = 0;
     this.minutes = 0;
     this.hours = 0;
@@ -81,22 +82,16 @@ class Puzzle {
       hours++;
     }
     var h, m, s;
-    if(seconds < 10)
-      s = '0' + seconds;
-    else s = seconds;
-    if(minutes < 10)
-      m = '0' + minutes;
-    else m = minutes;
-    if(hours < 10)
-      h = '0' + hours;
-    else h = hours;
+    seconds < 10 ? s = '0' + seconds : s = seconds;
+    minutes < 10 ? m = '0' + minutes : m = minutes;
+    hours < 10 ? h = '0' + hours : h = hours;
     gameTime = [seconds, minutes, hours];
     scoreTimer.innerHTML =  h + ':' + m + ':' + s;
     return gameTime;
   }
 
   stopTimer() {
-    clearInterval(this.startTimer);
+    clearInterval(this.timer);
     this.scoreTimer.textContent = "00:00:00";
     this.isGameStarted = false;
     this.seconds = 0; 
@@ -111,7 +106,7 @@ class Puzzle {
         this.scoreMovesCount.innerHTML = this.movesCount;
         if (!this.isGameStarted) {
           this.isGameStarted = true;
-          setInterval(() => {
+          this.timer = setInterval(() => {
             this.gameTime = this.startTimer(this.gameTime, this.scoreTimer, this.seconds, this.minutes, this.hours);
             [this.seconds, this.minutes, this.hours] = [...this.gameTime];
           }, 1000);
