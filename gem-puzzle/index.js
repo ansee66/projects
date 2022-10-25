@@ -5,6 +5,9 @@ const restartButton = document.createElement('button');
 const main = document.createElement('main');
 const container = document.createElement('div');
 const score = document.createElement('div');
+const scoreTimer = document.createElement('div');
+const scoreMoves = document.createElement('div');
+const scoreMovesCount = document.createElement('span');
 const gameField = document.createElement('div');
 
 header.classList.add('header');
@@ -17,12 +20,18 @@ document.body.prepend(header, main);
 header.append(restartButton);
 main.append(container);
 container.append(score, gameField);
+score.append(scoreTimer, scoreMoves);
 
-restartButton.innerHTML = "Shuffle and start";
+restartButton.textContent = 'Shuffle and start';
+scoreTimer.textContent = '00:00:00';
+scoreMoves.textContent = 'Moves: ';
+scoreMoves.append(scoreMovesCount);
+scoreMovesCount.textContent = '0';
 
-const puzzle = new Puzzle(gameField);
+const puzzle = new Puzzle(gameField, scoreTimer, scoreMovesCount);
 puzzle.renderPuzzle();
 puzzle.shufflePuzzle();
+puzzle.setHandlers();
 
 restartButton.addEventListener("click", () => {
   puzzle.shufflePuzzle();
