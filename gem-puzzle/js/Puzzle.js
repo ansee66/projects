@@ -16,6 +16,8 @@ class Puzzle {
     this.gameTime;
     this.moveSound = moveSound;
     this.settings = settings;
+    this.isStorage = typeof localStorage !== "undefined";
+    this.results = (this.isStorage && localStorage.getItem("results")) ? JSON.parse(localStorage.getItem("results")) : [];
   }
 
   renderPuzzle(rowTilesCount) {
@@ -113,7 +115,7 @@ class Puzzle {
   }
 
   shufflePuzzle(rowTilesCount) {
-    for (let i = 0; i < 2500; i++) {
+    for (let i = 0; i < 5; i++) {
       let index = Math.floor(Math.random() * rowTilesCount**2 + 1);
       this.moveTile(index);
     }
@@ -156,12 +158,21 @@ class Puzzle {
         return Math.round(Number(tile.innerHTML) - 1) === Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth);
       } else {
         return Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth) === this.rowTilesCount**2 - 1;
-
       }
     })
 
     if (isWin) {
       alert(`Hooray! You solved the puzzle in ${this.scoreTimer.innerHTML} and ${this.movesCount} moves!`);
+      let result = {
+        "mode": String(this.rowTilesCount + ' x ' + this.rowTilesCount), 
+        "moves": String(this.movesCount), 
+        "time": String(this.scoreTimer.innerHTML),
+      }
+      if (this.results.length >= 10) {
+        this.results.pop();
+      }
+      this.results.unshift(result);
+      localStorage.setItem("results", JSON.stringify(this.results));
       this.stopGame();
     }
   }
@@ -183,6 +194,20 @@ class Puzzle {
         this.checkFinish();
       }
     })
+  }
+
+  fillResults() {
+    if (this.isStorage && localStorage.getItem('results')) {
+      let resultsArr = JSON.parse(localStorage.getItem('results'));
+      let resultsTable = '';
+      resultsArr.forEach((result, i) => {
+        resultsTable += i + 1 + '. Mode: ' + result.mode + '. Moves: ' + result.moves + '. Time: ' + result.time + '\n';
+      })
+      alert(resultsTable)
+
+    } else {
+      alert('There are no winners yet')
+    }
   }
 }
 

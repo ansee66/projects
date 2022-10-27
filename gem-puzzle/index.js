@@ -3,6 +3,7 @@ import Puzzle from './js/Puzzle.js';
 const header = document.createElement('header');
 const restartButton = document.createElement('button');
 const soundButton = document.createElement('button');
+const resultsButton = document.createElement('button');
 const main = document.createElement('main');
 const container = document.createElement('div');
 const score = document.createElement('div');
@@ -16,19 +17,21 @@ const settings = document.createElement('div');
 header.classList.add('header');
 restartButton.classList.add('button');
 soundButton.classList.add('button');
+resultsButton.classList.add('button');
 container.classList.add('container');
 score.classList.add('score');
 gameField.classList.add('game-field');
 settings.classList.add('settings');
 
 document.body.prepend(header, main);
-header.append(restartButton, soundButton);
+header.append(restartButton, soundButton, resultsButton);
 main.append(container);
 container.append(score, gameField, settings);
 score.append(scoreTimer, scoreMoves);
 
 restartButton.textContent = 'Shuffle and start';
 soundButton.textContent = 'Mute';
+resultsButton.textContent = "Results";
 scoreTimer.textContent = '00:00:00';
 scoreMoves.textContent = 'Moves: ';
 scoreMoves.append(scoreMovesCount);
@@ -53,4 +56,8 @@ soundButton.addEventListener("click", () => {
     moveSound.volume = 0.5;
     soundButton.textContent = 'Mute';
   }
+})
+
+resultsButton.addEventListener("click", () => {
+  puzzle.fillResults();
 })
