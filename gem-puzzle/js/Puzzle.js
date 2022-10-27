@@ -115,7 +115,7 @@ class Puzzle {
   }
 
   shufflePuzzle(rowTilesCount) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 2500; i++) {
       let index = Math.floor(Math.random() * rowTilesCount**2 + 1);
       this.moveTile(index);
     }
