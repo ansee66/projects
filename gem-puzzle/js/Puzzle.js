@@ -1,11 +1,13 @@
 class Puzzle {
-  constructor(gameField, scoreTimer, scoreMovesCount, moveSound) {
+  constructor(gameField, scoreTimer, scoreMovesCount, moveSound, settings) {
     this.gameField = gameField;
     this.scoreTimer = scoreTimer;
     this.scoreMovesCount = scoreMovesCount;
     this.movesCount = 0;
     this.tiles = [];
-    this.tileWidth = 150;
+    // this.gameFieldWidth = document.querySelector('.game-field').clientWidth;
+    this.rowTilesCount = 4;
+    this.tileWidth = 100 / this.rowTilesCount;
     this.emptyTile;
     this.isGameStarted = false;
     this.timer;
@@ -14,29 +16,26 @@ class Puzzle {
     this.hours = 0;
     this.gameTime;
     this.moveSound = moveSound;
+    this.settings = settings;
   }
 
-  renderPuzzle() {
-    if (window.matchMedia('screen and (max-width: 767px)').matches) {
-      this.tileWidth = 70;
-    } else if (window.matchMedia('(min-width: 768px) and (max-width: 1279px)').matches) {
-      this.tileWidth = 120;
-    } else {
-      this.tileWidth = 150;
-    }
-
+  renderPuzzle(rowTilesCount) {
     this.gameField.innerHTML = "";
+    this.tiles = [];
+    this.tileWidth = 100 / this.rowTilesCount;
 
-    for (let i = 1; i <= 16; i += 1) {
+    for (let i = 1; i <= rowTilesCount**2; i += 1) {
       const tile = document.createElement('div');
       tile.classList.add('tile');
+      tile.style.width = this.tileWidth + "%";
+      tile.style.height = this.tileWidth + "%";
 
-      const left = (i - 1) % 4;
-      const top = (i - 1 - left) / 4;
-      tile.style.left = left  * this.tileWidth + "px";
-      tile.style.top = top * this.tileWidth + "px";
+      const left = (i - 1) % rowTilesCount;
+      const top = (i - 1 - left) / rowTilesCount;
+      tile.style.left = left  * this.tileWidth + "%";
+      tile.style.top = top * this.tileWidth + "%";
 
-      if (i === 16) {
+      if (i === rowTilesCount**2) {
         tile.classList.add('tile--empty');
         this.emptyTile = tile;
       } else {
@@ -52,16 +51,31 @@ class Puzzle {
     }
   }
 
+  renderSettings() {
+    for (let i = 3; i <= 8; i += 1) {
+      const settingsButton = document.createElement('button');
+      settingsButton.classList.add('button');
+      settingsButton.textContent = i + ' x ' + i;
+      this.settings.append(settingsButton);
+
+      settingsButton.addEventListener("click", () => {
+        this.rowTilesCount = i;
+        this.renderPuzzle(this.rowTilesCount);
+        this.shufflePuzzle(this.rowTilesCount);
+      });
+    }
+  }
+
   moveTile(i) {
     const emptyLeft = this.emptyTile.style.left;
     const emptyTop = this.emptyTile.style.top;
     const tileLeft = this.tiles[i - 1].style.left;
     const tileTop = this.tiles[i - 1].style.top;
 
-    const diffLeft = Math.abs(Number(emptyLeft.slice(0, -2)) - Number(tileLeft.slice(0, -2)));
-    const diffTop = Math.abs(Number(emptyTop.slice(0, -2)) - Number(tileTop.slice(0, -2)));
+    const diffLeft = Math.round(Math.abs(Number(emptyLeft.slice(0, -1)) - Number(tileLeft.slice(0, -1))));
+    const diffTop = Math.round(Math.abs(Number(emptyTop.slice(0, -1)) - Number(tileTop.slice(0, -1))));
 
-    if (diffLeft + diffTop === this.tileWidth) {
+    if (diffLeft + diffTop === Math.round(this.tileWidth)) {
       this.emptyTile.style.left = tileLeft;
       this.emptyTile.style.top = tileTop;
   
@@ -73,12 +87,9 @@ class Puzzle {
     }
   }
 
-  shufflePuzzle() {
-    this.moveTile(15);
-    this.moveTile(11);
-    this.moveTile(7);
-    for (let i = 0; i < 500; i++) {
-      let index = Math.floor(Math.random() * 16 + 1);
+  shufflePuzzle(rowTilesCount) {
+    for (let i = 0; i < 2500; i++) {
+      let index = Math.floor(Math.random() * rowTilesCount**2 + 1);
       this.moveTile(index);
     }
     this.stopGame();
@@ -126,12 +137,12 @@ class Puzzle {
         }
 
         let isWin = this.tiles.every((tile, i) => {
-          if (i !== 15) {
-            return Number(tile.innerHTML) - 1 === Number(tile.style.top.slice(0, -2)) / this.tileWidth * 4 + Number(tile.style.left.slice(0, -2)) / this.tileWidth;
+          if (i !== (this.rowTilesCount**2 - 1)) {
+            return Math.round(Number(tile.innerHTML) - 1) === Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth);
           } else {
-            return Number(tile.style.top.slice(0, -2)) / this.tileWidth * 4 + Number(tile.style.left.slice(0, -2)) / this.tileWidth === 15;
+            return Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth) === this.rowTilesCount**2 - 1;
+
           }
-          
         })
 
         if (isWin) {

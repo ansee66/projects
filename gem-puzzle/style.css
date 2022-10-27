@@ -44,7 +44,8 @@
   text-align: center;
 }
 
-.score {
+.score, 
+.settings {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
@@ -52,8 +53,9 @@
 
 .game-field {
   position: relative;
-  width: 600px;
-  height: 600px;
+  box-sizing: border-box;
+  width: 610px;
+  height: 610px;
   margin: 0 auto;
 
   border: 5px solid indigo;
@@ -65,11 +67,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 150px;
+  width: 25%;
+  height: 25%;
   box-sizing: border-box;
 
-  font-size: 60px;
+  font-size: 50px;
 
   background-color: lightseagreen;
   border: 3px solid white;
@@ -97,14 +99,16 @@
   }
   
   .game-field {
-    width: 480px;
-    height: 480px;
+    width: 490px;
+    height: 490px;
   }
-  
+
   .tile {
-    width: 120px;
-    height: 120px;
-    font-size: 50px;
+    font-size: 35px;
+  }  
+
+  .button {
+    font-size: 14px;
   }
 }
 
@@ -127,13 +131,20 @@
   }
   
   .game-field {
-    width: 280px;
-    height: 280px;
+    width: 290px;
+    height: 290px;
   }
   
   .tile {
-    width: 70px;
-    height: 70px;
-    font-size: 40px;
+    font-size: 20px;
+  }
+
+  .settings {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .settings .button {
+    font-size: 12px;
   }
 }
