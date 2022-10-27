@@ -1,5 +1,5 @@
 class Puzzle {
-  constructor(gameField, scoreTimer, scoreMovesCount, moveSound, settings) {
+  constructor(gameField, scoreTimer, scoreMovesCount, moveSound, settings, restartButton) {
     this.gameField = gameField;
     this.scoreTimer = scoreTimer;
     this.scoreMovesCount = scoreMovesCount;
@@ -16,6 +16,7 @@ class Puzzle {
     this.gameTime;
     this.moveSound = moveSound;
     this.settings = settings;
+    this.restartButton = restartButton;
     this.isStorage = typeof localStorage !== "undefined";
     this.results = (this.isStorage && localStorage.getItem("results")) ? JSON.parse(localStorage.getItem("results")) : [];
   }
@@ -193,6 +194,10 @@ class Puzzle {
         this.startTimer();
         this.checkFinish();
       }
+    })
+
+    this.restartButton.addEventListener("click", () => {
+      this.shufflePuzzle(this.rowTilesCount);
     })
   }
 

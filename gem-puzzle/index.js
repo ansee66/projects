@@ -37,16 +37,12 @@ scoreMoves.textContent = 'Moves: ';
 scoreMoves.append(scoreMovesCount);
 scoreMovesCount.textContent = '0';
 
-const puzzle = new Puzzle(gameField, scoreTimer, scoreMovesCount, moveSound, settings);
+const puzzle = new Puzzle(gameField, scoreTimer, scoreMovesCount, moveSound, settings, restartButton);
 puzzle.renderPuzzle(4);
 puzzle.renderSettings();
 puzzle.shufflePuzzle(4);
 puzzle.addClickHandler();
 puzzle.addDragHandler();
-
-restartButton.addEventListener("click", () => {
-  puzzle.shufflePuzzle();
-})
 
 soundButton.addEventListener("click", () => {
   if(soundButton.textContent === 'Mute') {
