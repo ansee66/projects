@@ -5,7 +5,6 @@ class Puzzle {
     this.scoreMovesCount = scoreMovesCount;
     this.movesCount = 0;
     this.tiles = [];
-    // this.gameFieldWidth = document.querySelector('.game-field').clientWidth;
     this.rowTilesCount = 4;
     this.tileWidth = 100 / this.rowTilesCount;
     this.emptyTile;
@@ -17,6 +16,8 @@ class Puzzle {
     this.gameTime;
     this.moveSound = moveSound;
     this.settings = settings;
+    this.isStorage = typeof localStorage !== "undefined";
+    this.results = (this.isStorage && localStorage.getItem("results")) ? JSON.parse(localStorage.getItem("results")) : [];
   }
 
   renderPuzzle(rowTilesCount) {
@@ -40,6 +41,7 @@ class Puzzle {
         this.emptyTile = tile;
       } else {
         tile.innerHTML = i;
+        tile.draggable = true;
       }
       this.gameField.append(tile);
       this.tiles.push(tile);
@@ -49,6 +51,31 @@ class Puzzle {
         this.moveSound.play();
       });
     }
+    this.addDropHandler();
+  }
+
+  addDragHandler() {
+    this.gameField.addEventListener('dragstart', (event) => {
+      event.target.classList.add('tile--draggable');
+      this.startTimer();
+    })
+    this.gameField.addEventListener('dragend', (event) => {
+      event.target.classList.remove('tile--draggable');
+    });
+  }
+
+  addDropHandler() {
+    this.emptyTile.addEventListener('dragover', (event) => {
+      event.preventDefault();
+    });
+    this.emptyTile.addEventListener('dragenter', (event) => {
+      event.preventDefault();
+    });
+    this.emptyTile.addEventListener('drop', () => {
+      this.moveTile(Number(this.gameField.querySelector('.tile--draggable').textContent));
+      this.moveSound.play();
+      this.checkFinish();
+    });
   }
 
   renderSettings() {
@@ -88,14 +115,14 @@ class Puzzle {
   }
 
   shufflePuzzle(rowTilesCount) {
-    for (let i = 0; i < 2500; i++) {
+    for (let i = 0; i < 5; i++) {
       let index = Math.floor(Math.random() * rowTilesCount**2 + 1);
       this.moveTile(index);
     }
     this.stopGame();
   }
 
-  startTimer(gameTime, scoreTimer, seconds, minutes, hours) {
+  createTimer(gameTime, scoreTimer, seconds, minutes, hours) {
     seconds++;
     if(seconds === 60){
       seconds = 0;
@@ -125,32 +152,62 @@ class Puzzle {
     this.hours = 0;
   }
 
-  setHandlers() {
-    this.gameField.addEventListener('click', (event) => {
-      if (event.target.classList.contains('tile')) {
-        if (!this.isGameStarted) {
-          this.isGameStarted = true;
-          this.timer = setInterval(() => {
-            this.gameTime = this.startTimer(this.gameTime, this.scoreTimer, this.seconds, this.minutes, this.hours);
-            [this.seconds, this.minutes, this.hours] = [...this.gameTime];
-          }, 1000);
-        }
-
-        let isWin = this.tiles.every((tile, i) => {
-          if (i !== (this.rowTilesCount**2 - 1)) {
-            return Math.round(Number(tile.innerHTML) - 1) === Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth);
-          } else {
-            return Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth) === this.rowTilesCount**2 - 1;
-
-          }
-        })
-
-        if (isWin) {
-          alert(`Hooray! You solved the puzzle in ${this.scoreTimer.innerHTML} and ${this.movesCount} moves!`);
-          this.stopGame();
-        }
+  checkFinish() {
+    let isWin = this.tiles.every((tile, i) => {
+      if (i !== (this.rowTilesCount**2 - 1)) {
+        return Math.round(Number(tile.innerHTML) - 1) === Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth);
+      } else {
+        return Math.round(Number(tile.style.top.slice(0, -1)) / this.tileWidth * this.rowTilesCount + Number(tile.style.left.slice(0, -1)) / this.tileWidth) === this.rowTilesCount**2 - 1;
       }
     })
+
+    if (isWin) {
+      alert(`Hooray! You solved the puzzle in ${this.scoreTimer.innerHTML} and ${this.movesCount} moves!`);
+      let result = {
+        "mode": String(this.rowTilesCount + ' x ' + this.rowTilesCount), 
+        "moves": String(this.movesCount), 
+        "time": String(this.scoreTimer.innerHTML),
+      }
+      if (this.results.length >= 10) {
+        this.results.pop();
+      }
+      this.results.unshift(result);
+      localStorage.setItem("results", JSON.stringify(this.results));
+      this.stopGame();
+    }
+  }
+
+  startTimer() {
+    if (!this.isGameStarted) {
+      this.isGameStarted = true;
+      this.timer = setInterval(() => {
+        this.gameTime = this.createTimer(this.gameTime, this.scoreTimer, this.seconds, this.minutes, this.hours);
+        [this.seconds, this.minutes, this.hours] = [...this.gameTime];
+      }, 1000);
+    }
+  }
+
+  addClickHandler() {
+    this.gameField.addEventListener('click', (event) => {
+      if (event.target.classList.contains('tile')) {
+        this.startTimer();
+        this.checkFinish();
+      }
+    })
+  }
+
+  fillResults() {
+    if (this.isStorage && localStorage.getItem('results')) {
+      let resultsArr = JSON.parse(localStorage.getItem('results'));
+      let resultsTable = '';
+      resultsArr.forEach((result, i) => {
+        resultsTable += i + 1 + '. Mode: ' + result.mode + '. Moves: ' + result.moves + '. Time: ' + result.time + '\n';
+      })
+      alert(resultsTable)
+
+    } else {
+      alert('There are no winners yet')
+    }
   }
 }
 
