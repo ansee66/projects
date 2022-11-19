@@ -75,7 +75,9 @@ class Puzzle {
     this.emptyTile.addEventListener('drop', () => {
       this.moveTile(Number(this.gameField.querySelector('.tile--draggable').textContent));
       this.moveSound.play();
-      this.checkFinish();
+      setTimeout(() => {
+        this.checkFinish();
+      }, 500);
     });
   }
 
@@ -192,7 +194,9 @@ class Puzzle {
     this.gameField.addEventListener('click', (event) => {
       if (event.target.classList.contains('tile')) {
         this.startTimer();
-        this.checkFinish();
+        setTimeout(() => {
+          this.checkFinish();
+        }, 500);
       }
     })
 
