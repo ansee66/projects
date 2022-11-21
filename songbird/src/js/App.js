@@ -18,9 +18,11 @@ class App {
     this.scoreCounter = 6;
     this.rightAnswerSound = new Audio(rightAnswerSound);
     this.wrongAnswerSound = new Audio(wrongAnswerSound);
+    this.isRightAnswerGiven = false;
   }
 
   renderQuiz() {
+    this.isRightAnswerGiven = false;
     this.scoreCounter = 6;
     Array.from(this.stagesList.children).map((item, i) => {
       item.classList.remove("stages__item--current");
@@ -77,14 +79,19 @@ class App {
 
         if (event.target.textContent === this.hiddenBird.name) {
           event.target.classList.add("options__item--right");
-          this.rightAnswerSound.play();
+          if (!this.isRightAnswerGiven) {
+            this.rightAnswerSound.play();
+          }
           this.questionTitle.textContent = selectedBird.name;
           this.question.querySelector('.question__image').src = selectedBird.image;
           this.button.classList.add("button--active");
           this.scoreNumber.innerHTML = Number(this.scoreNumber.innerHTML) + this.scoreCounter;
+          this.isRightAnswerGiven = true;
         } else {
-          event.target.classList.add("options__item--wrong");
-          this.wrongAnswerSound.play();
+          if (!this.isRightAnswerGiven) {
+            event.target.classList.add("options__item--wrong");
+            this.wrongAnswerSound.play();
+          }
         }
       }
     })
