@@ -1,7 +1,7 @@
 import birdsData from '../assets/data/birds';
 
 class App {
-  constructor(button, main, birdIconSRC) {
+  constructor(button, main, birdIconSRC, rightAnswerSound, wrongAnswerSound) {
     this.scoreNumber = document.querySelector('.score__number');
     this.stagesList = document.querySelector('.stages');
     this.question = document.querySelector('.question');
@@ -16,6 +16,8 @@ class App {
     this.birdIconSRC = birdIconSRC;
     this.stage = 0;
     this.scoreCounter = 6;
+    this.rightAnswerSound = new Audio(rightAnswerSound);
+    this.wrongAnswerSound = new Audio(wrongAnswerSound);
   }
 
   renderQuiz() {
@@ -75,12 +77,14 @@ class App {
 
         if (event.target.textContent === this.hiddenBird.name) {
           event.target.classList.add("options__item--right");
+          this.rightAnswerSound.play();
           this.questionTitle.textContent = selectedBird.name;
           this.question.querySelector('.question__image').src = selectedBird.image;
           this.button.classList.add("button--active");
           this.scoreNumber.innerHTML = Number(this.scoreNumber.innerHTML) + this.scoreCounter;
         } else {
           event.target.classList.add("options__item--wrong");
+          this.wrongAnswerSound.play();
         }
       }
     })

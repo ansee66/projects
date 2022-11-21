@@ -1,5 +1,7 @@
 import './style.css';
 import App from './js/App';
+import rightAnswerSound from './assets/audio/right-answer.mp3';
+import wrongAnswerSound from './assets/audio/wrong-answer.mp3';
 
 const header = document.querySelector('.page-header');
 const headerTop = document.querySelector('.page-header__top');
@@ -26,6 +28,6 @@ main.append(container);
 container.append(question, answer, button);
 answer.append(optionsTemplate.content.cloneNode(true), answerRightTemplate.content.cloneNode(true));
 
-const app = new App(button, main, birdIconSRC);
+const app = new App(button, main, birdIconSRC, rightAnswerSound, wrongAnswerSound);
 app.renderQuiz();
 app.setHandlers();
