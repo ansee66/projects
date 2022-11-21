@@ -1,0 +1,150 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1000px;
+  margin: 0 auto 10px;
+}
+
+.button {
+  min-height: 50px;
+  padding: 10px;
+
+  font: inherit;
+
+  color: white;
+  background-color: indigo;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 650px;
+  
+  margin: 0 auto;
+  text-align: center;
+}
+
+.score, 
+.settings {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
+.game-field {
+  position: relative;
+  box-sizing: border-box;
+  width: 610px;
+  height: 610px;
+  margin: 0 auto;
+
+  border: 5px solid indigo;
+  border-radius: 10px;
+}
+
+.tile {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 25%;
+  box-sizing: border-box;
+
+  font-size: 50px;
+
+  background-color: lightseagreen;
+  border: 3px solid white;
+  border-radius: 10px;
+  cursor: move;
+  transition: all 0.5s ease;
+}
+
+.tile--empty {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.tile:active {
+  border: 2px solid indigo;
+}
+
+@media (max-width: 1279px) {
+  .header {
+    max-width: 600px;
+  }
+
+  .container {
+    max-width: 500px;
+  }
+  
+  .game-field {
+    width: 490px;
+    height: 490px;
+  }
+
+  .tile {
+    font-size: 35px;
+  }  
+
+  .button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    max-width: 300px;
+  }
+  
+  .button {
+    min-height: 40px;
+    padding: 5px;
+  }
+  
+  .container {
+    max-width: 300px;
+  }
+  
+  .score {
+    padding: 20px;
+  }
+  
+  .game-field {
+    width: 290px;
+    height: 290px;
+  }
+  
+  .tile {
+    font-size: 20px;
+  }
+
+  .settings {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .settings .button {
+    font-size: 12px;
+  }
+}

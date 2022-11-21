@@ -1,0 +1,299 @@
+.donate {
+    color: white;
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    opacity: 0.9;
+}
+
+.donate__wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 40px 0 180px;
+}
+
+.donate__title {
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 130%;
+    text-transform: uppercase;
+}
+
+.donate__text {
+    font-weight: 500;
+}
+
+.donate__info {
+    margin-top: 45px;
+    margin-bottom: 60px;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+    color: #FE9013;
+}
+
+.donate__feed {
+    padding: 40px 92px 62px;
+
+    text-align: center;
+    
+    color: #333B41;
+    background: rgba(253, 253, 255, 0.52);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+}
+
+.donate__feed-title {
+    margin-bottom: 20px;
+
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    text-align: center;
+
+    color: var(--orange);
+}
+
+.donate__feed-text {
+    font-size: 24px;
+    line-height: 29px;
+    text-align: left;
+}
+
+.donate__diet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 48px;
+}
+
+.donate__diet-count {
+    position: relative;
+    margin-left: -14px;
+    margin-right: 89px;
+    padding-top: 50px;
+}
+
+.donate__diet-count span {
+    display: block;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.donate__diet-count::after {
+    position: absolute;
+    content: "";
+    width: 14px;
+    height: 14px;
+    right: -25px;
+    top: 55%;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 14C0.744141 14 0.488281 13.9023 0.292969 13.707C-0.0976562 13.3164 -0.0976562 12.6836 0.292969 12.293L12.293 0.292969C12.6836 -0.0976562 13.3164 -0.0976562 13.707 0.292969C14.0977 0.683594 14.0977 1.31641 13.707 1.70703L1.70703 13.707C1.51172 13.9023 1.25586 14 1 14Z' fill='%23333B41'/%3E%3Cpath d='M13 14C12.7441 14 12.4883 13.9023 12.293 13.707L0.292969 1.70703C-0.0976562 1.31641 -0.0976562 0.683594 0.292969 0.292969C0.683594 -0.0976562 1.31641 -0.0976562 1.70703 0.292969L13.707 12.293C14.0977 12.6836 14.0977 13.3164 13.707 13.707C13.5117 13.9023 13.2559 14 13 14Z' fill='%23333B41'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.donate__img {
+    width: 284px;
+    height: 246px;
+}
+
+.donate__amount-title {
+    margin-bottom: 17px;
+    text-align: left;
+}
+
+.donate__input {
+    min-width: 268px;
+    padding: 15px 50px 15px 9px;
+    line-height: 22px;
+    background-color: transparent;
+    border: 1px solid #929699;
+    border-radius: 2px;
+}
+
+.donate__period {
+    max-width: 218px;
+    margin: 27px auto 28px;
+    display: flex;
+}
+
+.donate__radio {
+    display: flex;
+    align-items: center;
+    margin-right: 52px;
+}
+
+.donate__radio::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 1px solid #FE9013;
+    border-radius: 50%;
+}
+
+.donate__period input:checked + .donate__radio::before {
+    background-color: #4B9200;
+    border: 1px solid #4B9200;
+}
+
+.donate__button {
+    margin: 28px auto 30px;
+}
+
+@media (max-width: 1599.98px) {
+    .donate__wrapper {
+        padding: 40px 31px 30px 30px;
+    }
+
+    .donate__title {
+        max-width: 780px;
+        margin-bottom: 30px;
+    }
+
+    .donate__info {
+        margin-top: 46px;
+        margin-bottom: 40px;
+    }
+
+    .donate__feed {
+        padding: 20px 45px 46px;
+    }
+
+    .donate__feed-title {
+        margin-bottom: 10px;
+    }
+
+    .donate__feed-text {
+        text-align: center;
+    }
+
+    .donate__amount {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 999.98px) {
+    .donate__wrapper {
+        padding: 30px 20px 45px;
+    }
+
+    .donate__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .donate__info {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .donate__feed {
+        padding: 30px 0px 31px;
+    }
+
+    .donate__feed-title {
+        margin-bottom: 20px;
+    }
+
+    .donate__diet {
+        margin-top: 50px;
+        margin-bottom: 41px;
+    }
+
+    .donate__amount {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .donate__amount-title {
+        margin-bottom: 7px;
+        padding-left: 10px;
+    }
+
+    .donate__input {
+        min-width: 180px;
+        padding: 9px 7px;
+    }
+
+    .donate__period {
+        margin: 30px auto;
+    }
+}
+
+
+@media (max-width: 639px) {
+    .donate__wrapper {
+        padding: 30px 10px 21px;
+    }
+
+    .donate__info {
+        margin-bottom: 28px;
+        font-size: 24px;
+    }
+
+    .donate__feed {
+        padding: 20px 0px;
+    }
+
+    .donate__feed-title {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .donate__feed-text {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .donate__diet {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .donate__diet-count {
+        margin-left: 0;
+        margin-right: 50px;
+        padding-top: 35px;
+        font-size: 9px;
+    }
+
+    .donate__diet-count span {
+        font-size: 41px;
+    }
+
+    .donate__diet-count::after {
+        width: 8px;
+        height: 8px;
+        right: -14px;
+        top: 54%;
+    }
+    
+    .donate__img {
+        width: 160px;
+        height: 139px;
+    }
+
+    .donate__amount-title {
+        padding-left: 0;
+    }
+
+    .donate__period {
+        margin: 25px auto;
+    }
+
+    .donate__button {
+        margin-top: 27px;
+    }
+
+    .donate__end-text {
+        margin-left: -1px;
+    }
+}

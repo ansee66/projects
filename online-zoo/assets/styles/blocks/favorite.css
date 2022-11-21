@@ -1,0 +1,130 @@
+.favorite {
+    max-width: 1600px;
+    height: 780px;
+    margin: 0 auto;
+    padding-top: 166px;
+    background-image: url('../../images/Big_panda.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.favorite__title {
+    position: relative;
+    max-width: 501px;
+    margin: 0 0 60px 55%;
+
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 107px;
+    line-height: 75%;
+    text-transform: uppercase;
+    text-align: center;
+
+    z-index: 1;
+
+    color: var(--white);
+}
+
+.favorite__title::before {
+    position: absolute;
+    content: "";
+
+    top: -74px;
+    left: -73px;
+
+    width: 465px;
+    height: 465px;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+}
+
+.favorite__title--color{
+    color: var(--yellow)
+}
+
+.favorite__button {
+    position: relative;
+    margin-left: 61.5%;
+}
+
+@media (max-width: 1599.98px) {
+    .favorite {
+        height: 584px;
+        padding-top: 124px;
+        background-size: cover;
+    }
+
+    .favorite__title {
+        margin-bottom: 40px;
+        margin-left: 46.3vw;
+        font-size: 85px;
+    }
+
+    .favorite__title::before {
+        top: -54px;
+        left: -7px;
+        width: 367px;
+        height: 367px;
+    }
+
+    .favorite__button {
+        margin-left: 56.5vw;
+    }
+}
+
+@media (max-width: 999.98px) {
+    .favorite {
+        height: 373px;
+        padding-top: 82px;
+    }
+
+    .favorite__title {
+        max-width: 256px;
+        margin-bottom: 0;
+        margin-left: 57.5vw;
+
+        font-size: 54px;
+        line-height: 76%;
+    }
+
+    .favorite__title::before {
+        top: -38px;
+        left: -37px;
+        width: 238px;
+        height: 238px;
+    }
+
+    .favorite__button {
+        margin-top: -8px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 639.98px) {
+    .favorite {
+        height: 221px;
+        padding-top: 76px;
+    }
+
+    .favorite__title {
+        margin-left: 53.5vw;
+        font-size: 28px;
+    }
+
+    .favorite__title::before {
+        top: -20px;
+        left: -8px;
+        width: 119px;
+        height: 119px;
+    }
+
+    .favorite__button {
+        margin-top: 59px;
+        margin-left: 10px;
+    }
+}

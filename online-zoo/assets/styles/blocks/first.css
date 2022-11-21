@@ -1,0 +1,41 @@
+.first {
+    max-width: 1600px;
+    height: 390px;
+    margin: -3px auto 0;
+}
+
+.first__img {
+    display: block;
+    height: 100%;
+}
+
+@media (max-width: 1599.98px) {
+    .first {
+        margin-top: 0;
+    }
+    
+    .first__img {
+        object-fit: cover;
+        object-position: -171px;
+    }
+}
+
+@media (max-width: 999.98px) {
+    .first {
+        height: 335px;
+    }
+    
+    .first__img {
+        object-position: -272px;
+    }
+}
+
+@media (max-width: 639.98px) {
+    .first {
+        height: 187px;
+    }
+    
+    .first__img {
+        object-position: -149px;
+    }
+}

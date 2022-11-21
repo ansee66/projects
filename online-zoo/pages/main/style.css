@@ -1,0 +1,13 @@
+@import "../../assets/styles/global.css";
+@import "../../assets/styles/normalise.css";
+
+@import "../../assets/styles/blocks/button.css";
+@import "../../assets/styles/blocks/header.css";
+@import "../../assets/styles/blocks/favorite.css";
+@import "../../assets/styles/blocks/wild.css";
+@import "../../assets/styles/blocks/slider.css";
+@import "../../assets/styles/blocks/card.css";
+@import "../../assets/styles/blocks/feed.css";
+@import "../../assets/styles/blocks/testimonials.css";
+@import "../../assets/styles/blocks/footer.css";
+@import "../../assets/styles/blocks/form.css";

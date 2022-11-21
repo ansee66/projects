@@ -1,0 +1,36 @@
+.form__title {
+    margin-bottom: 14px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.form__input {
+    min-width: 228px;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #F9804B;
+    border-radius: 2px;
+}
+
+.form__button {
+    display: inline-block;
+    width: 129px;
+    min-height: 42px;
+    margin-left: 6px;
+
+    font-weight: 400;
+    text-transform: none;
+
+    color: #4B9200;
+
+    background-image: none;
+    background-color: #F1F3F2;
+    border: 1px solid #4B9200;
+    border-radius: 5px;
+}
+
+@media (max-width: 1599px) {
+    .form__button {
+        margin-left: 5px;
+    }
+}
