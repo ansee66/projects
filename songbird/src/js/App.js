@@ -147,7 +147,9 @@ class App {
           this.questionTitle.textContent = selectedBird.name;
           this.question.querySelector('.question__image').src = selectedBird.image;
           this.nextLevelButton.classList.add("button--active");
-          this.scoreNumber.innerHTML = Number(this.scoreNumber.innerHTML) + this.scoreCounter;
+          if (!this.isRightAnswerGiven) {
+            this.scoreNumber.innerHTML = Number(this.scoreNumber.innerHTML) + this.scoreCounter;
+          }
           this.isRightAnswerGiven = true;
         } else {
           if (!this.isRightAnswerGiven) {

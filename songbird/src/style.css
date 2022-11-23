@@ -65,6 +65,27 @@ h1, h2 {
   margin: 30px auto;
 }
 
+.gallery {
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.gallery__title {
+  margin-bottom: 50px;
+}
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.gallery__item {
+  padding: 20px;
+  border: 2px solid green;
+  border-radius: 15px;
+}
+
 .question {
   display: flex;
   margin: 25px 0 40px;
