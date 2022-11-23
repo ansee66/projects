@@ -3,31 +3,15 @@ import App from './js/App';
 import rightAnswerSound from './assets/audio/right-answer.mp3';
 import wrongAnswerSound from './assets/audio/wrong-answer.mp3';
 
-const header = document.querySelector('.page-header');
-const headerTop = document.querySelector('.page-header__top');
-const scoreBlock = document.querySelector('#score-template');
-const main = document.querySelector('.page-main');
-const container = document.createElement('div');
-const stagesTemplate = document.querySelector('#stages-template');
-const questionTemplate = document.querySelector('#question-template');
-const question = questionTemplate.content.cloneNode(true);
-const answer = document.createElement('div');
-const optionsTemplate = document.querySelector('#answer-options-template');
-const answerRightTemplate = document.querySelector('#answer-right-template');
-const button = document.createElement('button');
+const header = document.querySelector('.page-header .container');
+const main = document.querySelector('.page-main .container');
+const startTemplate = document.querySelector('#start-template');
 const birdIconSRC = './assets/img/hidden-bird.svg';
+main.append(startTemplate.content.cloneNode(true));
+const startButton = document.querySelector('#start-button');
 
-container.classList.add('container');
-answer.classList.add('answer');
-button.classList.add('button');
-button.textContent = "Next level";
-
-header.append(stagesTemplate.content.cloneNode(true));
-headerTop.append(scoreBlock.content.cloneNode(true));
-main.append(container);
-container.append(question, answer, button);
-answer.append(optionsTemplate.content.cloneNode(true), answerRightTemplate.content.cloneNode(true));
-
-const app = new App(button, main, birdIconSRC, rightAnswerSound, wrongAnswerSound);
-app.renderQuiz();
-app.setHandlers();
+const app = new App(header, main, birdIconSRC, rightAnswerSound, wrongAnswerSound);
+startButton.addEventListener("click", () => {
+  app.renderQuiz();
+  app.renderStage();
+})
