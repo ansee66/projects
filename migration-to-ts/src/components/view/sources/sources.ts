@@ -24,9 +24,11 @@ class Sources {
         }
       });
 
+      const sourceInner = document.querySelector('.sources__inner');
+      if (sourceInner instanceof HTMLElement) sourceInner.append(fragment);
       const sources = document.querySelector('.sources');
       if (sources instanceof HTMLElement) {
-        sources.append(fragment);
+        return sources;
       }
     }
   }
