@@ -1,4 +1,4 @@
-export interface IOptions {
+export interface Options {
   [key: string]: string;
 }
 
@@ -7,7 +7,7 @@ export enum Endpoint {
   Everything = 'everything',
 }
 
-export interface ISource {
+export interface Source {
   id: string;
   name: string;
   description: string;
@@ -19,10 +19,10 @@ export interface ISource {
 
 export interface ISources {
   status: string;
-  sources: Array<ISource>;
+  sources: Array<Source>;
 }
 
-export interface IArticle {
+export interface Article {
   source: {
     id: string | null;
     name: string;
@@ -39,5 +39,5 @@ export interface IArticle {
 export interface INews {
   status: string;
   totalResults?: number;
-  articles: Array<IArticle>;
+  articles: Array<Article>;
 }
