@@ -17,6 +17,11 @@ export interface ISource {
   country: string;
 }
 
+export interface ISources {
+  status: string;
+  sources: Array<ISource>;
+}
+
 export interface IArticle {
   source: {
     id: string | null;
@@ -29,4 +34,10 @@ export interface IArticle {
   urlToImage: string;
   publishedAt: string;
   content: string;
+}
+
+export interface INews {
+  status: string;
+  totalResults?: number;
+  articles: Array<IArticle>;
 }
