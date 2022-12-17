@@ -17,18 +17,18 @@ class Loader {
     this.load<T>('GET', endpoint, callback, options);
   }
 
-  private errorHandler(res: Response): Response {
-    if (!res.ok) {
+  errorHandler(res: Response): Response {
+    if (res.ok) {
+      return res;
+    } else {
       if (res.status === 401 || res.status === 404)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
-
-    return res;
   }
 
-  private makeUrl(endpoint: Endpoint, options?: Options): string {
-    const urlOptions = { ...this.options, ...options };
+  makeUrl(endpoint: Endpoint, options?: Options): string {
+    const urlOptions: Options = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
@@ -38,7 +38,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  private load<T>(method: string, endpoint: Endpoint, callback: (data: T) => void, options?: Options) {
+  load<T>(method: string, endpoint: Endpoint, callback: (data: T) => void, options?: Options) {
     fetch(this.makeUrl(endpoint, options), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

@@ -1,6 +1,6 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { INews, ISources } from '../../types/index';
+import { NewsResponse, SourcesResponse, Article, Source } from '../../types/index';
 import Pagination from './sources/pagination';
 
 export class AppView {
@@ -14,16 +14,16 @@ export class AppView {
     this.pagination = new Pagination();
   }
 
-  drawNews(data: INews | undefined) {
-    const values = data?.articles ? data?.articles : [];
+  drawNews(data: NewsResponse | undefined) {
+    const values: Array<Article> = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
-  drawSources(data: ISources | undefined) {
-    const values = data?.sources ? data?.sources : [];
+  drawSources(data: SourcesResponse | undefined) {
+    const values: Array<Source> = data?.sources ? data?.sources : [];
     const sourcesItems = this.sources.draw(values);
     this.pagination.render();
-    if (sourcesItems instanceof HTMLElement) this.pagination.setHandlers(sourcesItems);
+    this.pagination.setHandlers(sourcesItems);
   }
 }
 

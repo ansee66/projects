@@ -1,36 +1,22 @@
 import './sources.css';
-import { Source } from '../../../types/index';
+import { Source, ISources } from '../../../types/index';
 
-class Sources {
+class Sources implements ISources {
   draw(data: Array<Source>) {
     const fragment = document.createDocumentFragment();
-    const sourceItemTemp = document.querySelector('#sourceItemTemp');
+    const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-    if (sourceItemTemp instanceof HTMLTemplateElement) {
-      data.forEach((item) => {
-        const sourceClone = sourceItemTemp.content.cloneNode(true);
-        if (sourceClone instanceof DocumentFragment) {
-          const sourceItemName = sourceClone.querySelector('.source__item-name');
-          if (sourceItemName instanceof HTMLElement) {
-            sourceItemName.textContent = item.name;
-          }
+    data.forEach((item) => {
+      const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
-          const sourceItem = sourceClone.querySelector('.source__item');
-          if (sourceItem instanceof HTMLElement) {
-            sourceItem.setAttribute('data-source-id', item.id);
-          }
+      (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
+      (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
 
-          fragment.append(sourceClone);
-        }
-      });
+      fragment.append(sourceClone);
+    });
 
-      const sourceInner = document.querySelector('.sources__inner');
-      if (sourceInner instanceof HTMLElement) sourceInner.append(fragment);
-      const sources = document.querySelector('.sources');
-      if (sources instanceof HTMLElement) {
-        return sources;
-      }
-    }
+    (document.querySelector('.sources__inner') as HTMLElement).append(fragment);
+    return document.querySelector('.sources') as HTMLElement;
   }
 }
 
