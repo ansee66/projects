@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 18px;
+  color: white;
+  background-color: black;
+}
+
+.button {
+  box-sizing: border-box;
+  margin-right: 20px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: white;
+  background-color: darkorchid;
+  border: 3px solid white;
+}
