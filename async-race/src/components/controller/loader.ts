@@ -1,7 +1,6 @@
-import { CarsResponse } from "../../types/interfaces";
+import { CarsResponse, Car, CarWithoutID } from '../../types/interfaces';
 
 class Loader {
-
   private static baseUrl = 'http://127.0.0.1:3000';
 
   private static garage = `${Loader.baseUrl}/garage`;
@@ -13,6 +12,18 @@ class Loader {
       cars: await response.json(),
       count: response.headers.get('X-Total-Count'),
     };
+  }
+
+  static async createCar(data: CarWithoutID): Promise<Car> {
+    const response = await fetch(`${Loader.garage}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    return response.json();
   }
 }
 

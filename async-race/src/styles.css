@@ -10,9 +10,27 @@ body {
 .button {
   box-sizing: border-box;
   margin-right: 20px;
-  padding: 10px 20px;
+  padding: 7px 20px;
   text-transform: uppercase;
   color: white;
-  background-color: darkorchid;
+  background-color: #654321;
   border: 3px solid white;
+}
+
+.button--nav {
+  padding: 10px 20px;
+  background-color: darkorchid;
+}
+
+.create {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 0 5px;
+  font-size: inherit;
 }
