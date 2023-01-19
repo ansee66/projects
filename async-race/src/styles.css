@@ -13,19 +13,30 @@ body {
   padding: 7px 20px;
   text-transform: uppercase;
   color: white;
-  background-color: #654321;
+  background-color: #4b0082;
   border: 3px solid white;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(1.5);
+}
+
+.button:disabled {
+  opacity: 0.3;
+  cursor: auto;
 }
 
 .button--nav {
   padding: 10px 20px;
-  background-color: darkorchid;
+  background-color: green;
 }
 
-.create {
+.editor {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 5px 0;
 }
 
 .input {
@@ -33,4 +44,12 @@ body {
   min-height: 36px;
   padding: 0 5px;
   font-size: inherit;
+}
+
+.input--color:not(:disabled) {
+  cursor: pointer;
+}
+
+.car-buttons {
+  padding-top: 10px;
 }
