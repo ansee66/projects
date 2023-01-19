@@ -7,14 +7,29 @@ body {
   background-color: black;
 }
 
+main {
+  padding-top: 10px;
+}
+
+.page-title {
+  margin: 15px 0;
+  font-size: 30px;
+}
+
+.page-subtitle {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
 .button {
   box-sizing: border-box;
+  min-width: 100px;
   margin-right: 20px;
-  padding: 7px 20px;
+  padding: 5px 15px;
   text-transform: uppercase;
   color: white;
   background-color: #4b0082;
-  border: 3px solid white;
+  border: 1px solid white;
   cursor: pointer;
 }
 
@@ -25,11 +40,17 @@ body {
 .button:disabled {
   opacity: 0.3;
   cursor: auto;
+  filter: none;
 }
 
 .button--nav {
-  padding: 10px 20px;
   background-color: green;
+}
+
+.button--select,
+.button--remove {
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .editor {
@@ -41,8 +62,8 @@ body {
 
 .input {
   box-sizing: border-box;
-  min-height: 36px;
-  padding: 0 5px;
+  min-height: 30px;
+  padding: 0 2px;
   font-size: inherit;
 }
 
@@ -50,6 +71,32 @@ body {
   cursor: pointer;
 }
 
-.car-buttons {
+.car-list {
   padding-top: 10px;
+}
+
+.car {
+  border-bottom: 1px dashed white;
+}
+
+.car__info {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.car__title {
+  margin: 0 20px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.car__image {
+  width: 70px;
+  height: auto;
+}
+
+.pagination {
+  padding: 25px 0 10px;
 }

@@ -12,16 +12,18 @@ class GarageView {
 
   currentPage: number;
 
+  pageLimit: number;
+
   constructor() {
     this.menu = new Menu();
     this.car = new CarView();
     this.carList = null;
     this.currentPage = 1;
+    this.pageLimit = 7;
   }
 
   public render() {
     const html = `
-      <h1>Garage</h1>
       <div class="editor editor--create">
         <input class="input" type="text" placeholder="Car brand" name="create-car-brand" id="create-brand">
         <input class="input input--color" type="color" name="Car color" id="create-color">
@@ -32,7 +34,13 @@ class GarageView {
         <input class="input input--color" type="color" name="Car color" id="update-color" disabled>
         <button class="button" id="update-button" disabled>Update Car</button>
       </div>
+      <h1 class="page-title">Garage (<span id="car-amount"></span>)</h1>
+      <h2 class="page-subtitle">Page #<span id="current-page"></span></h2>
       <div class="car-list"></div>
+      <div class="pagination">
+        <button class="button button--nav button--prev">Prev</button>
+        <button class="button button--nav button--next">Next</button>
+      </div>
     `;
     const menu = this.menu.drawBlock();
     const main = document.createElement('main');
@@ -43,13 +51,16 @@ class GarageView {
 
     this.addCreateAndUpdateListener();
     this.addCarListListener();
+    this.addPaginationListener();
 
     this.drawCarList(this.currentPage);
   }
 
-  private drawCarList(page: number): void {
-    Loader.getCars(page).then((res) => {
+  private drawCarList(page: number, limit = this.pageLimit): void {
+    Loader.getCars(page, limit).then((res) => {
       this.fillCarList(res.cars);
+      this.setPaginationBtnsState(Number(res.count));
+      this.renderNumbers(Number(res.count));
     });
   }
 
@@ -127,6 +138,34 @@ class GarageView {
         button.dataset.update = id.toString();
       }
     });
+  }
+
+  private addPaginationListener(): void {
+    const pagination: Element | null = document.querySelector('.pagination');
+
+    pagination?.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLButtonElement) {
+        if (e.target.classList.contains('button--prev')) this.currentPage -= 1;
+        if (e.target.classList.contains('button--next')) this.currentPage += 1;
+        this.drawCarList(this.currentPage);
+      }
+    });
+  }
+
+  private setPaginationBtnsState(carAmount: number): void {
+    const prevBtn = document.querySelector('.button--prev') as HTMLButtonElement;
+    const nextBtn = document.querySelector('.button--next') as HTMLButtonElement;
+    
+    const lastPage = Math.ceil(carAmount / 7);
+    prevBtn.disabled = this.currentPage === 1;
+    nextBtn.disabled = this.currentPage === lastPage;
+  }
+
+  private renderNumbers(amount: number): void {
+    const carAmount = document.querySelector('#car-amount') as HTMLElement;
+    const pageNumber = document.querySelector('#current-page') as HTMLElement;
+    carAmount.textContent = amount.toString();
+    pageNumber.textContent = this.currentPage.toString();
   }
 }
 
