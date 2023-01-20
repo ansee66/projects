@@ -10,7 +10,7 @@ class Garage {
 
   static carList: Element | null = null;
 
-  static currentPage = 1;
+  static currentPage: number = Garage.loadState();
 
   static pageLimit = 7;
 
@@ -139,6 +139,7 @@ class Garage {
       if (e.target instanceof HTMLButtonElement) {
         if (e.target.classList.contains('button--prev')) Garage.currentPage -= 1;
         if (e.target.classList.contains('button--next')) Garage.currentPage += 1;
+        Garage.saveState();
         Garage.drawCarList(Garage.currentPage);
       }
     });
@@ -158,6 +159,16 @@ class Garage {
     const pageNumber = document.querySelector('#current-page') as HTMLElement;
     carAmount.textContent = amount.toString();
     pageNumber.textContent = Garage.currentPage.toString();
+  }
+
+  private static saveState(): void {
+    localStorage.setItem('currentPage', JSON.stringify(Garage.currentPage));
+  }
+
+  private static loadState(): number {
+    let page = Number(localStorage.getItem('currentPage'));
+    if (page === 0) page = 1;
+    return page;
   }
 }
 
