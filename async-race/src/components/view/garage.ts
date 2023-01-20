@@ -2,6 +2,7 @@ import Menu from './menu';
 import CarView from './car';
 import Loader from '../controller/loader';
 import { Car } from '../../types/interfaces';
+import Utils from '../../utils/utils';
 
 class Garage {
   static menu: Menu = new Menu();
@@ -26,6 +27,9 @@ class Garage {
         <input class="input input--color" type="color" name="Car color" id="update-color" disabled>
         <button class="button" id="update-button" disabled>Update Car</button>
       </div>
+      <div class="controls">
+        <button class="button" id="generate-button">Generate Cars</button>
+      </div>
       <h1 class="page-title">Garage (<span id="car-amount"></span>)</h1>
       <h2 class="page-subtitle">Page #<span id="current-page"></span></h2>
       <div class="car-list"></div>
@@ -44,8 +48,9 @@ class Garage {
     Garage.addCreateAndUpdateListener();
     Garage.addCarListListener();
     Garage.addPaginationListener();
+    Garage.addGenerateListener();
 
-    Garage.drawCarList(Garage.currentPage);
+    Garage.drawCarList(Garage.currentPage); 
   }
 
   private static drawCarList(page: number, limit = Garage.pageLimit): void {
@@ -159,6 +164,21 @@ class Garage {
     const pageNumber = document.querySelector('#current-page') as HTMLElement;
     carAmount.textContent = amount.toString();
     pageNumber.textContent = Garage.currentPage.toString();
+  }
+
+  private static addGenerateListener(): void {
+    const generateButton = document.querySelector('#generate-button') as HTMLElement;
+    generateButton.addEventListener('click', () => {
+      Garage.generateCars();
+    });
+  }
+
+  private static generateCars(): void {
+    for (let i = 0; i < 100; i += 1) {
+      Loader.createCar({name: Utils.getRandomName(), color: Utils.getRandomColor()}).then(() => {
+        Garage.drawCarList(Garage.currentPage);
+      });
+    }
   }
 
   private static saveState(): void {

@@ -60,6 +60,10 @@ main {
   padding: 5px 0;
 }
 
+.controls {
+  padding: 5px 0;
+}
+
 .input {
   box-sizing: border-box;
   min-height: 30px;
