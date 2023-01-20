@@ -1,14 +1,8 @@
-import GarageView from "../view/garage";
+import Garage from "../view/garage";
 
 class App {
-  garage: GarageView;
-
-  constructor() {
-    this.garage = new GarageView();
-  }
-
   start() {
-    this.garage.render();
+    Garage.render();
   }
 }
 

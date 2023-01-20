@@ -3,26 +3,18 @@ import CarView from './car';
 import Loader from '../controller/loader';
 import { Car } from '../../types/interfaces';
 
-class GarageView {
-  menu: Menu;
+class Garage {
+  static menu: Menu = new Menu();
 
-  car: CarView;
+  static car: CarView = new CarView();
 
-  carList: Element | null;
+  static carList: Element | null = null;
 
-  currentPage: number;
+  static currentPage = 1;
 
-  pageLimit: number;
+  static pageLimit = 7;
 
-  constructor() {
-    this.menu = new Menu();
-    this.car = new CarView();
-    this.carList = null;
-    this.currentPage = 1;
-    this.pageLimit = 7;
-  }
-
-  public render() {
+  public static render() {
     const html = `
       <div class="editor editor--create">
         <input class="input" type="text" placeholder="Car brand" name="create-car-brand" id="create-brand">
@@ -42,41 +34,41 @@ class GarageView {
         <button class="button button--nav button--next">Next</button>
       </div>
     `;
-    const menu = this.menu.drawBlock();
+    const menu = Garage.menu.drawBlock();
     const main = document.createElement('main');
     main.innerHTML = html;
     document.body.append(menu, main);
 
-    this.carList = document.querySelector('.car-list');
+    Garage.carList = document.querySelector('.car-list');
 
-    this.addCreateAndUpdateListener();
-    this.addCarListListener();
-    this.addPaginationListener();
+    Garage.addCreateAndUpdateListener();
+    Garage.addCarListListener();
+    Garage.addPaginationListener();
 
-    this.drawCarList(this.currentPage);
+    Garage.drawCarList(Garage.currentPage);
   }
 
-  private drawCarList(page: number, limit = this.pageLimit): void {
+  private static drawCarList(page: number, limit = Garage.pageLimit): void {
     Loader.getCars(page, limit).then((res) => {
-      this.fillCarList(res.cars);
-      this.setPaginationBtnsState(Number(res.count));
-      this.renderNumbers(Number(res.count));
+      Garage.fillCarList(res.cars);
+      Garage.setPaginationBtnsState(Number(res.count));
+      Garage.renderNumbers(Number(res.count));
     });
   }
 
-  private fillCar(car: Car) {
-    const newCar = this.car.drawCar(car.id, car.name, car.color);
-    if (this.carList instanceof Element) this.carList.append(newCar);
+  private static fillCar(car: Car) {
+    const newCar = Garage.car.drawCar(car.id, car.name, car.color);
+    if (Garage.carList instanceof Element) Garage.carList.append(newCar);
   }
 
-  private fillCarList(cars: Car[]) {
-    if (this.carList) this.carList.innerHTML = '';
+  private static fillCarList(cars: Car[]) {
+    if (Garage.carList) Garage.carList.innerHTML = '';
     cars.forEach((car) => {
-      this.fillCar(car);
+      Garage.fillCar(car);
     });
   }
 
-  private addCreateAndUpdateListener(): void {
+  private static addCreateAndUpdateListener(): void {
     ['create', 'update'].forEach((action) => {
       const editor = document.querySelector(`.editor--${action}`) as HTMLElement;
       const [brandInput, colorInput, button] = [...editor.children] as [
@@ -88,13 +80,13 @@ class GarageView {
       button.addEventListener('click', () => {
         if (action === 'create') {
           Loader.createCar({ name: brandInput.value, color: colorInput.value }).then(() => {
-            this.drawCarList(this.currentPage);
+            Garage.drawCarList(Garage.currentPage);
           });
         }
         if (action === 'update') {
           Loader.updateCar(Number(button.dataset.update), { name: brandInput.value, color: colorInput.value }).then(
             () => {
-              this.drawCarList(this.currentPage);
+              Garage.drawCarList(Garage.currentPage);
             }
           );
         }
@@ -102,26 +94,26 @@ class GarageView {
     });
   }
 
-  private addCarListListener(): void {
-    this.carList?.addEventListener('click', (e) => {
+  private static addCarListListener(): void {
+    Garage.carList?.addEventListener('click', (e) => {
       if (e.target instanceof HTMLButtonElement) {
         if (e.target.classList.contains('button--select')) {
-          this.updateCar(Number(e.target.dataset.select));
+          Garage.updateCar(Number(e.target.dataset.select));
         }
         if (e.target.classList.contains('button--remove')) {
-          this.deleteCar(Number(e.target.dataset.remove));
+          Garage.deleteCar(Number(e.target.dataset.remove));
         }
       }
     });
   }
 
-  private deleteCar(id: number) {
+  private static deleteCar(id: number) {
     Loader.deleteCar(id).then(() => {
-      this.drawCarList(this.currentPage);
+      Garage.drawCarList(Garage.currentPage);
     });
   }
 
-  private updateCar(id: number) {
+  private static updateCar(id: number) {
     const updateEditor = document.querySelector('.editor--update') as HTMLElement;
     const [brandInput, colorInput, button]: Element[] = [...updateEditor.children];
     Loader.getCar(id).then((res) => {
@@ -140,33 +132,33 @@ class GarageView {
     });
   }
 
-  private addPaginationListener(): void {
+  private static addPaginationListener(): void {
     const pagination: Element | null = document.querySelector('.pagination');
 
     pagination?.addEventListener('click', (e) => {
       if (e.target instanceof HTMLButtonElement) {
-        if (e.target.classList.contains('button--prev')) this.currentPage -= 1;
-        if (e.target.classList.contains('button--next')) this.currentPage += 1;
-        this.drawCarList(this.currentPage);
+        if (e.target.classList.contains('button--prev')) Garage.currentPage -= 1;
+        if (e.target.classList.contains('button--next')) Garage.currentPage += 1;
+        Garage.drawCarList(Garage.currentPage);
       }
     });
   }
 
-  private setPaginationBtnsState(carAmount: number): void {
+  private static setPaginationBtnsState(carAmount: number): void {
     const prevBtn = document.querySelector('.button--prev') as HTMLButtonElement;
     const nextBtn = document.querySelector('.button--next') as HTMLButtonElement;
-    
+
     const lastPage = Math.ceil(carAmount / 7);
-    prevBtn.disabled = this.currentPage === 1;
-    nextBtn.disabled = this.currentPage === lastPage;
+    prevBtn.disabled = Garage.currentPage === 1;
+    nextBtn.disabled = Garage.currentPage === lastPage;
   }
 
-  private renderNumbers(amount: number): void {
+  private static renderNumbers(amount: number): void {
     const carAmount = document.querySelector('#car-amount') as HTMLElement;
     const pageNumber = document.querySelector('#current-page') as HTMLElement;
     carAmount.textContent = amount.toString();
-    pageNumber.textContent = this.currentPage.toString();
+    pageNumber.textContent = Garage.currentPage.toString();
   }
 }
 
-export default GarageView;
+export default Garage;
