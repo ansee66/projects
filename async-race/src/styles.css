@@ -53,6 +53,14 @@ main {
   padding-bottom: 2px;
 }
 
+.button--race {
+  align-self: flex-start;
+  min-width: 22px;
+  margin-right: 5px;
+  padding: 1px;
+  background-color: green;
+}
+
 .editor {
   display: flex;
   align-items: center;
@@ -96,9 +104,26 @@ main {
   line-height: 22px;
 }
 
+.car__main {
+  display: flex;
+  align-items: flex-end;
+}
+
 .car__image {
   width: 70px;
   height: auto;
+  margin-left: 10px;
+}
+
+.car__image svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.car__flag {
+  height: 35px;
+  margin-left: auto;
+  margin-right: 80px;
 }
 
 .pagination {

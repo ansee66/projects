@@ -3,6 +3,7 @@ import CarView from './car';
 import Loader from '../controller/loader';
 import { Car } from '../../types/interfaces';
 import Utils from '../../utils/utils';
+import Race from './race';
 
 class Garage {
   static menu: Menu = new Menu();
@@ -50,7 +51,7 @@ class Garage {
     Garage.addPaginationListener();
     Garage.addGenerateListener();
 
-    Garage.drawCarList(Garage.currentPage); 
+    Garage.drawCarList(Garage.currentPage);
   }
 
   private static drawCarList(page: number, limit = Garage.pageLimit): void {
@@ -107,6 +108,18 @@ class Garage {
         }
         if (e.target.classList.contains('button--remove')) {
           Garage.deleteCar(Number(e.target.dataset.remove));
+        }
+        if (e.target.classList.contains('button--start')) {
+          e.target.disabled = true;
+          Race.startCar(Number(e.target.dataset.start));
+          const stopButton: Element | null = e.target.nextElementSibling;
+          if (stopButton instanceof HTMLButtonElement) stopButton.disabled = false;
+        }
+        if (e.target.classList.contains('button--stop')) {
+          e.target.disabled = true;
+          Race.returnCar(Number(e.target.dataset.stop));
+          const startButton: Element | null = e.target.previousElementSibling;
+          if (startButton instanceof HTMLButtonElement) startButton.disabled = false;
         }
       }
     });
@@ -175,7 +188,7 @@ class Garage {
 
   private static generateCars(): void {
     for (let i = 0; i < 100; i += 1) {
-      Loader.createCar({name: Utils.getRandomName(), color: Utils.getRandomColor()}).then(() => {
+      Loader.createCar({ name: Utils.getRandomName(), color: Utils.getRandomColor() }).then(() => {
         Garage.drawCarList(Garage.currentPage);
       });
     }
