@@ -1,23 +1,34 @@
 import Loader from '../controller/loader';
-import { AnimatedCars } from '../../types/interfaces';
+import { Car, AnimatedCars, WinnerWithoutWins } from '../../types/interfaces';
 
 class Race {
   static animatedCars: AnimatedCars = {};
 
-  public static async startCar(id: number) {
+  static racingCars: WinnerWithoutWins[] = [];
+
+  public static async startCar(id: number, isRace = false): Promise<WinnerWithoutWins> {
     const res = await Loader.startEngine(id);
     const time = res.distance / res.velocity;
     Race.animateCar(id, time);
     const { success }: { success: boolean } = { ...(await Loader.startDrive(id)) };
-    if (!success) Race.stopCar(id);
+
+    const p: Promise<WinnerWithoutWins> = new Promise((resolve) => {
+      if (success) {
+        if (isRace) Race.racingCars.push({ time, id });
+        resolve({ time, id });
+      } else {
+        Race.stopCar(id);
+      }
+    });
+    return p;
   }
 
-  private static stopCar(id: number) {
+  private static stopCar(id: number): void {
     Loader.stopEngine(id);
     cancelAnimationFrame(Race.animatedCars[id].animID);
   }
 
-  public static returnCar(id: number) {
+  public static returnCar(id: number): void {
     Race.stopCar(id);
     Race.animatedCars[id].carElem.style.transform = 'translateX(0)';
   }
@@ -29,7 +40,7 @@ class Race {
     const framesCount = (time / 1000) * 30;
     const delta = (endPosition - currentPosition) / framesCount;
 
-    function move() {
+    function move(): void {
       currentPosition += delta;
       carElem.style.transform = `translateX(${currentPosition}px)`;
       if (currentPosition < endPosition) {
@@ -41,6 +52,12 @@ class Race {
       }
     }
     move();
+  }
+
+  public static async startRace(cars: Car[]): Promise<WinnerWithoutWins> {
+    Race.racingCars = [];
+    const response: WinnerWithoutWins = await Promise.any(cars.map((car) => Race.startCar(car.id, true)));
+    return response;
   }
 }
 

@@ -129,3 +129,20 @@ main {
 .pagination {
   padding: 25px 0 10px;
 }
+
+.finish-message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+  color: yellow;
+  text-shadow: 2px 8px 6px rgb(0 0 0), 0px -5px 35px rgb(255 255 255);
+}
+
+.finish-message--shown {
+  display: block;
+}

@@ -12,6 +12,8 @@ class Garage {
 
   static carList: Element | null = null;
 
+  static currentCars: Car[] = [];
+
   static currentPage: number = Garage.loadState();
 
   static pageLimit = 7;
@@ -29,6 +31,8 @@ class Garage {
         <button class="button" id="update-button" disabled>Update Car</button>
       </div>
       <div class="controls">
+        <button class="button button--nav" id="race-button">Race</button>
+        <button class="button button--nav" id="reset-button" disabled>Reset</button>
         <button class="button" id="generate-button">Generate Cars</button>
       </div>
       <h1 class="page-title">Garage (<span id="car-amount"></span>)</h1>
@@ -38,6 +42,7 @@ class Garage {
         <button class="button button--nav button--prev">Prev</button>
         <button class="button button--nav button--next">Next</button>
       </div>
+      <div class="finish-message"></div>
     `;
     const menu = Garage.menu.drawBlock();
     const main = document.createElement('main');
@@ -50,12 +55,14 @@ class Garage {
     Garage.addCarListListener();
     Garage.addPaginationListener();
     Garage.addGenerateListener();
+    Garage.addRaceListener();
 
     Garage.drawCarList(Garage.currentPage);
   }
 
   private static drawCarList(page: number, limit = Garage.pageLimit): void {
     Loader.getCars(page, limit).then((res) => {
+      Garage.currentCars = [...res.cars];
       Garage.fillCarList(res.cars);
       Garage.setPaginationBtnsState(Number(res.count));
       Garage.renderNumbers(Number(res.count));
@@ -192,6 +199,19 @@ class Garage {
         Garage.drawCarList(Garage.currentPage);
       });
     }
+  }
+
+  private static addRaceListener(): void {
+    const raceButton = document.querySelector('#race-button') as HTMLElement;
+    raceButton.addEventListener('click', () => {
+      const message = document.querySelector('.finish-message') as HTMLElement;
+      if (message.classList.contains('finish-message--shown')) message.classList.remove('finish-message--shown');
+      Race.startRace(Garage.currentCars).then((res) => {
+        const winner: Car[] = Garage.currentCars.filter((car) => car.id === res.id);
+        message.innerHTML = `${winner[0].name} went first in ${(res.time / 1000).toFixed(2)} seconds`;
+        message.classList.add('finish-message--shown');
+      });
+    });
   }
 
   private static saveState(): void {
