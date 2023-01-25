@@ -37,7 +37,7 @@ class Race {
     const carElem = document.querySelector(`.car__image[data-car="${id}"]`) as HTMLElement;
     let currentPosition = carElem.offsetLeft;
     const endPosition = (Number(carElem.parentElement?.offsetWidth) - carElem.offsetWidth * 2) / stopCoef;
-    const framesCount = (time / 1000) * 30;
+    const framesCount = (time / 1000) * 40;
     const delta = (endPosition - currentPosition) / framesCount;
 
     function move(): void {
@@ -57,6 +57,8 @@ class Race {
   public static async startRace(cars: Car[]): Promise<WinnerWithoutWins> {
     Race.racingCars = [];
     const response: WinnerWithoutWins = await Promise.any(cars.map((car) => Race.startCar(car.id, true)));
+    response.time = +(response.time / 1000).toFixed(2);
+    Loader.addWin(response);
     return response;
   }
 }

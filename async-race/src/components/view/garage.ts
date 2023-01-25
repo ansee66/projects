@@ -1,13 +1,12 @@
-import Menu from './menu';
 import CarView from './car';
+import ListView from './listView';
+import { GarageHtml } from './html';
 import Loader from '../controller/loader';
-import { Car } from '../../types/interfaces';
+import { Car, CarParams } from '../../types/interfaces';
 import Utils from '../../utils/utils';
 import Race from './race';
 
 class Garage {
-  static menu: Menu = new Menu();
-
   static car: CarView = new CarView();
 
   static carList: Element | null = null;
@@ -18,67 +17,21 @@ class Garage {
 
   static pageLimit = 7;
 
-  public static render() {
-    const html = `
-      <div class="editor editor--create">
-        <input class="input" type="text" placeholder="Car brand" name="create-car-brand" id="create-brand">
-        <input class="input input--color" type="color" name="Car color" id="create-color">
-        <button class="button" id="create-button">Create Car</button>
-      </div>
-      <div class="editor editor--update">
-        <input class="input" type="text" placeholder="Car brand" name="update-car-brand" id="update-brand" disabled>
-        <input class="input input--color" type="color" name="Car color" id="update-color" disabled>
-        <button class="button" id="update-button" disabled>Update Car</button>
-      </div>
-      <div class="controls">
-        <button class="button button--nav" id="race-button">Race</button>
-        <button class="button button--nav" id="reset-button" disabled>Reset</button>
-        <button class="button" id="generate-button">Generate Cars</button>
-      </div>
-      <h1 class="page-title">Garage (<span id="car-amount"></span>)</h1>
-      <h2 class="page-subtitle">Page #<span id="current-page"></span></h2>
-      <div class="car-list"></div>
-      <div class="pagination">
-        <button class="button button--nav button--prev">Prev</button>
-        <button class="button button--nav button--next">Next</button>
-      </div>
-      <div class="finish-message"></div>
-    `;
-    const menu = Garage.menu.drawBlock();
-    const main = document.createElement('main');
-    main.innerHTML = html;
-    document.body.append(menu, main);
+  static view: ListView<Car, CarParams> = new ListView(GarageHtml, '.car-list', Loader.getCars, Garage.car.drawCar);
 
-    Garage.carList = document.querySelector('.car-list');
+  public static render(): void {
+    Garage.carList = Garage.view.render();
+    Garage.drawCarList();
 
     Garage.addCreateAndUpdateListener();
     Garage.addCarListListener();
     Garage.addPaginationListener();
     Garage.addGenerateListener();
     Garage.addRaceListener();
-
-    Garage.drawCarList(Garage.currentPage);
   }
 
-  private static drawCarList(page: number, limit = Garage.pageLimit): void {
-    Loader.getCars(page, limit).then((res) => {
-      Garage.currentCars = [...res.cars];
-      Garage.fillCarList(res.cars);
-      Garage.setPaginationBtnsState(Number(res.count));
-      Garage.renderNumbers(Number(res.count));
-    });
-  }
-
-  private static fillCar(car: Car) {
-    const newCar = Garage.car.drawCar(car.id, car.name, car.color);
-    if (Garage.carList instanceof Element) Garage.carList.append(newCar);
-  }
-
-  private static fillCarList(cars: Car[]) {
-    if (Garage.carList) Garage.carList.innerHTML = '';
-    cars.forEach((car) => {
-      Garage.fillCar(car);
-    });
+  private static async drawCarList(): Promise<void> {
+    Garage.currentCars = await Garage.view.drawList({ page: Garage.currentPage, limit: Garage.pageLimit });
   }
 
   private static addCreateAndUpdateListener(): void {
@@ -93,13 +46,13 @@ class Garage {
       button.addEventListener('click', () => {
         if (action === 'create') {
           Loader.createCar({ name: brandInput.value, color: colorInput.value }).then(() => {
-            Garage.drawCarList(Garage.currentPage);
+            Garage.drawCarList();
           });
         }
         if (action === 'update') {
           Loader.updateCar(Number(button.dataset.update), { name: brandInput.value, color: colorInput.value }).then(
             () => {
-              Garage.drawCarList(Garage.currentPage);
+              Garage.drawCarList();
             }
           );
         }
@@ -134,7 +87,7 @@ class Garage {
 
   private static deleteCar(id: number) {
     Loader.deleteCar(id).then(() => {
-      Garage.drawCarList(Garage.currentPage);
+      Garage.drawCarList();
     });
   }
 
@@ -165,25 +118,9 @@ class Garage {
         if (e.target.classList.contains('button--prev')) Garage.currentPage -= 1;
         if (e.target.classList.contains('button--next')) Garage.currentPage += 1;
         Garage.saveState();
-        Garage.drawCarList(Garage.currentPage);
+        Garage.drawCarList();
       }
     });
-  }
-
-  private static setPaginationBtnsState(carAmount: number): void {
-    const prevBtn = document.querySelector('.button--prev') as HTMLButtonElement;
-    const nextBtn = document.querySelector('.button--next') as HTMLButtonElement;
-
-    const lastPage = Math.ceil(carAmount / 7);
-    prevBtn.disabled = Garage.currentPage === 1;
-    nextBtn.disabled = Garage.currentPage === lastPage;
-  }
-
-  private static renderNumbers(amount: number): void {
-    const carAmount = document.querySelector('#car-amount') as HTMLElement;
-    const pageNumber = document.querySelector('#current-page') as HTMLElement;
-    carAmount.textContent = amount.toString();
-    pageNumber.textContent = Garage.currentPage.toString();
   }
 
   private static addGenerateListener(): void {
@@ -196,7 +133,7 @@ class Garage {
   private static generateCars(): void {
     for (let i = 0; i < 100; i += 1) {
       Loader.createCar({ name: Utils.getRandomName(), color: Utils.getRandomColor() }).then(() => {
-        Garage.drawCarList(Garage.currentPage);
+        Garage.drawCarList();
       });
     }
   }
@@ -208,7 +145,7 @@ class Garage {
       if (message.classList.contains('finish-message--shown')) message.classList.remove('finish-message--shown');
       Race.startRace(Garage.currentCars).then((res) => {
         const winner: Car[] = Garage.currentCars.filter((car) => car.id === res.id);
-        message.innerHTML = `${winner[0].name} went first in ${(res.time / 1000).toFixed(2)} seconds`;
+        message.innerHTML = `${winner[0].name} went first in ${res.time} seconds`;
         message.classList.add('finish-message--shown');
       });
     });

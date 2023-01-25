@@ -6,8 +6,8 @@ export interface Car {
 
 export type CarWithoutID = Omit<Car, 'id'>;
 
-export interface CarsResponse {
-  cars: Car[];
+export interface ItemsResponse<T> {
+  items: T[];
   count: string | null;
 }
 
@@ -33,4 +33,23 @@ export interface Winner {
   time: number;
 }
 
+export interface WinnerForRender extends Winner {
+  name: string;
+  color: string;
+}
+
 export type WinnerWithoutWins = Omit<Winner, 'wins'>;
+
+export type SortType = 'id' | 'wins' | 'time';
+
+export type OderType = 'ASC' | 'DESC';
+
+export interface CarParams {
+  page: number;
+  limit?: number;
+}
+
+export interface WinnerParams extends CarParams {
+  sort?: SortType;
+  order?: OderType;
+}

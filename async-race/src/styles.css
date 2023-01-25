@@ -115,7 +115,8 @@ main {
   margin-left: 10px;
 }
 
-.car__image svg {
+.car__image svg,
+.winner__image svg {
   max-width: 100%;
   height: auto;
 }
@@ -145,4 +146,24 @@ main {
 
 .finish-message--shown {
   display: block;
+}
+
+.winner-list {
+  padding: 15px 0;
+}
+
+.winner {
+  display: grid;
+  grid-template-columns: repeat(2, min-content) 200px repeat(2, min-content);
+  grid-gap: 25px;
+  padding: 5px 0;
+}
+
+.winner__image {
+  width: 50px;
+  height: auto;
+}
+
+.winner__title {
+  white-space: nowrap;
 }

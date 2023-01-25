@@ -1,12 +1,15 @@
+import { Car } from '../../types/interfaces';
+
 class CarView {
-  public drawCar(id: number, title: string, color: string): HTMLElement {
+  public drawCar(item: Car): HTMLElement {
+    const { id, name, color }: Car = item;
     const carBlock = document.createElement('div');
     carBlock.classList.add('car-item', 'car');
     carBlock.innerHTML = `
       <div class="car__info">
         <button class="button button--select" data-select="${id}">Select</button>
         <button class="button button--remove" data-remove="${id}">Remove</button>
-        <h3 class="car__title">${title}</h3>
+        <h3 class="car__title">${name}</h3>
       </div>
       <div class="car__main">
         <button class="button button--race button--start" data-start="${id}">A</button>
