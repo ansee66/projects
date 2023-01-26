@@ -61,6 +61,12 @@ class Race {
     Loader.addWin(response);
     return response;
   }
+
+  public static stopRace(cars: Car[]): void {
+    cars.forEach((car) => {
+      Race.returnCar(car.id);
+    })
+  }
 }
 
 export default Race;

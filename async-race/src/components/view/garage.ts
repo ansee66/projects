@@ -139,15 +139,26 @@ class Garage {
   }
 
   private static addRaceListener(): void {
-    const raceButton = document.querySelector('#race-button') as HTMLElement;
+    const raceButton = document.querySelector('#race-button') as HTMLButtonElement;
+    const resetButton = document.querySelector('#reset-button') as HTMLButtonElement;
+    const message = document.querySelector('.finish-message') as HTMLElement;
+
     raceButton.addEventListener('click', () => {
-      const message = document.querySelector('.finish-message') as HTMLElement;
+      raceButton.disabled = true;
       if (message.classList.contains('finish-message--shown')) message.classList.remove('finish-message--shown');
       Race.startRace(Garage.currentCars).then((res) => {
+        resetButton.disabled = false;
         const winner: Car[] = Garage.currentCars.filter((car) => car.id === res.id);
         message.innerHTML = `${winner[0].name} went first in ${res.time} seconds`;
         message.classList.add('finish-message--shown');
       });
+    });
+
+    resetButton.addEventListener('click', () => {
+      resetButton.disabled = true;
+      if (message.classList.contains('finish-message--shown')) message.classList.remove('finish-message--shown');
+      Race.stopRace(Garage.currentCars);
+      raceButton.disabled = false;
     });
   }
 

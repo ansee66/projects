@@ -104,10 +104,6 @@ class Loader {
   }
 
   static async getWinners(params?: WinnerParams): Promise<ItemsResponse<Winner>> {
-    // _sort=['id'|'wins'|'time']
-    // _order=['ASC'|'DESC']
-    // const queryParams = '';
-    // if (page) queryParams += page;
     let queryString = '';
     if (params && Object.entries(params).length !== 0) {
       const args: [string, number | SortType | OderType][] = Object.entries(params);
