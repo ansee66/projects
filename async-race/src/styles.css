@@ -154,7 +154,7 @@ main {
 
 .winner {
   display: grid;
-  grid-template-columns: repeat(2, min-content) 200px repeat(2, min-content);
+  grid-template-columns: repeat(2, 40px) 200px repeat(2, 40px);
   grid-gap: 25px;
   padding: 5px 0;
 }

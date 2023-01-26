@@ -22,7 +22,32 @@ class Winners {
 
   public static render(): void {
     Winners.winnerList = Winners.view.render();
-    Winners.view.drawList({ page: Winners.currentPage });
+    Winners.view.drawList({ page: Winners.currentPage, limit: Winners.pageLimit });
+
+    Winners.addPaginationListener();
+  }
+
+  private static addPaginationListener(): void {
+    const pagination: Element | null = document.querySelector('.pagination');
+
+    pagination?.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLButtonElement) {
+        if (e.target.classList.contains('button--prev')) Winners.currentPage -= 1;
+        if (e.target.classList.contains('button--next')) Winners.currentPage += 1;
+        Winners.saveState();
+        Winners.view.drawList({ page: Winners.currentPage, limit: Winners.pageLimit });
+      }
+    });
+  }
+
+  private static saveState(): void {
+    localStorage.setItem('winnersPage', JSON.stringify(Winners.currentPage));
+  }
+
+  private static loadState(): number {
+    let page = Number(localStorage.getItem('winnersPage'));
+    if (page === 0) page = 1;
+    return page;
   }
 }
 
