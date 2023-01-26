@@ -149,14 +149,19 @@ main {
 }
 
 .winner-list {
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 .winner {
   display: grid;
-  grid-template-columns: repeat(2, 40px) 200px repeat(2, 40px);
+  grid-template-columns: 25px 50px 200px repeat(2, 50px);
   grid-gap: 25px;
   padding: 5px 0;
+}
+
+.winner--head {
+  padding-top: 20px;
+  font-weight: 700;
 }
 
 .winner__image {
@@ -166,4 +171,21 @@ main {
 
 .winner__title {
   white-space: nowrap;
+}
+
+.winners-sort {
+  position: relative;
+  cursor: pointer;
+}
+
+.winners-sort--asc::after,
+.winners-sort--desc::after {
+  content: '↓';
+  width: 10px;
+  height: 15px;
+  padding-left: 5px;
+}
+
+.winners-sort--desc::after {
+  content: '↑';
 }

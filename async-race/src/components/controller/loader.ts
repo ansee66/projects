@@ -8,7 +8,7 @@ import {
   WinnerWithoutWins,
   WinnerForRender,
   SortType,
-  OderType,
+  OrderType,
   CarParams,
   WinnerParams,
 } from '../../types/interfaces';
@@ -106,8 +106,8 @@ class Loader {
   static async getWinners(params?: WinnerParams): Promise<ItemsResponse<Winner>> {
     let queryString = '';
     if (params && Object.entries(params).length !== 0) {
-      const args: [string, number | SortType | OderType][] = Object.entries(params);
-      const queryParams = args.map((arg) => `_${arg[0]}=${arg[1]}&`);
+      const args: [string, number | SortType | OrderType][] = Object.entries(params);
+      const queryParams = args.map((arg) => `_${arg[0]}=${arg[1]}`);
       queryString = `?${queryParams.join('&')}`;
     }
     const response: Response = await fetch(`${Loader.winners}${queryString}`);

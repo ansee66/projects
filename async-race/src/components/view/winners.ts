@@ -2,16 +2,18 @@ import WinnerView from './winner';
 import ListView from './listView';
 import { WinnersHtml } from './html';
 import Loader from '../controller/loader';
-import { WinnerForRender, WinnerParams } from '../../types/interfaces';
+import { WinnerForRender, WinnerParams, SortType, OrderType } from '../../types/interfaces';
 
 class Winners {
   static winner: WinnerView = new WinnerView();
 
   static winnerList: Element | null = null;
 
-  static currentPage = 1;
+  static currentPage: number = Winners.loadState();
 
   static pageLimit = 10;
+
+  static order: OrderType = 'ASC';
 
   static view: ListView<WinnerForRender, WinnerParams> = new ListView(
     WinnersHtml,
@@ -25,6 +27,7 @@ class Winners {
     Winners.view.drawList({ page: Winners.currentPage, limit: Winners.pageLimit });
 
     Winners.addPaginationListener();
+    Winners.addSortListener();
   }
 
   private static addPaginationListener(): void {
@@ -48,6 +51,30 @@ class Winners {
     let page = Number(localStorage.getItem('winnersPage'));
     if (page === 0) page = 1;
     return page;
+  }
+
+  private static addSortListener(): void {
+    const sortElements = [...document.querySelectorAll('.winners-sort')] as HTMLElement[];
+    sortElements.forEach((element) => {
+      element.addEventListener('click', () => {
+        sortElements.forEach((item) => {
+          item.classList.remove('winners-sort--desc', 'winners-sort--asc');
+        });
+        if (this.order === 'ASC') {
+          this.order = 'DESC';
+          element.classList.add('winners-sort--desc');
+        } else {
+          this.order = 'ASC';
+          element.classList.add('winners-sort--asc');
+        }
+        Winners.view.drawList({
+          page: Winners.currentPage,
+          limit: Winners.pageLimit,
+          sort: element.dataset.sort as SortType,
+          order: Winners.order,
+        });
+      });
+    });
   }
 }
 

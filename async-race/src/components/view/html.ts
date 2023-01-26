@@ -27,6 +27,13 @@ export const GarageHtml = `
 export const WinnersHtml = `
   <h1 class="page-title">Winners (<span id="items-amount"></span>)</h1>
   <h2 class="page-subtitle">Page #<span id="current-page"></span></h2>
+  <div class="winner winner--head">
+    <span class="winner__number">№</span>
+    <div class="winner__image">Car</div>
+    <b class="winner__title">Name</b>
+    <span class="winner__wins winners-sort" data-sort="wins">Wins</span>
+    <span class="winner__time winners-sort" data-sort="time">Time</span>
+  </div>
   <div class="winner-list"></div>
   <div class="pagination">
     <button class="button button--nav button--prev">Prev</button>

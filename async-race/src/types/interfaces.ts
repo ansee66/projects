@@ -42,7 +42,7 @@ export type WinnerWithoutWins = Omit<Winner, 'wins'>;
 
 export type SortType = 'id' | 'wins' | 'time';
 
-export type OderType = 'ASC' | 'DESC';
+export type OrderType = 'ASC' | 'DESC';
 
 export interface CarParams {
   page: number;
@@ -51,5 +51,5 @@ export interface CarParams {
 
 export interface WinnerParams extends CarParams {
   sort?: SortType;
-  order?: OderType;
+  order?: OrderType;
 }
