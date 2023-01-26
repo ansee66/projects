@@ -61,6 +61,9 @@ class Loader {
     const response: Response = await fetch(`${Loader.garage}/${id}`, {
       method: 'DELETE',
     });
+    const winners = await Loader.getWinners();
+    const winner = winners.items.filter((item) => item.id === id);
+    if (winner.length > 0) Loader.deleteWinner(id);
     return response.json();
   }
 
@@ -150,6 +153,13 @@ class Loader {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ wins: data.wins + 1, time: data.time }),
+    });
+    return response.json();
+  }
+
+  static async deleteWinner(id: number): Promise<void> {
+    const response: Response = await fetch(`${Loader.winners}/${id}`, {
+      method: 'DELETE',
     });
     return response.json();
   }
