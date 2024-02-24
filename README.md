@@ -3,7 +3,7 @@
 * HTML and JS project: Website with adaptive layout - https://ansee66.github.io/projects/online-zoo/pages/main/index.html
 * HTML and JS project: Business card website with adaptive layout and custom videoplayer - https://ansee66.github.io/projects/portfolio/
 * JS project: Random quotes in two languages - https://ansee66.github.io/projects/random-jokes/
-* JS project: Memory game (search for paired cards) - https://ansee66.github.io/rsschool/memory-game/
+* JS project: Memory game (search for paired cards) - https://ansee66.github.io/projects/memory-game/
 * JS project: Online Quiz SongBird - https://ansee66.github.io/projects/songbird/dist/index.html
 * JS project: The Gem Puzzle - https://ansee66.github.io/projects/gem-puzzle/index.html
 * JS project: Virtual keyboard - https://ansee66.github.io/virtual-keyboard/
